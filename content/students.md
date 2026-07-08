@@ -1,0 +1,25 @@
++++
+title = "For Students"
+description = "RTIs only take us so far. You know what software your coursework depends on, we need that data."
+
+[extra]
+heading = "How can you help if you are a Student"
++++
+
+## Join the community-led course audits!
+
+RTIs only take us so far, with most institutions either not providing the full picture or not responding all together. That's where you come in!
+
+You know what software your coursework depends on, we need that data!
+
+{{ btn(label="Join the audit", href="mailto:foundation@fossunited.org?subject=Course%20audit") }}
+
+## Try your hand at RTIs
+
+Did we miss filing a Right to Information request with your institute, are you intrigued by how all this works? Would you like to file one?
+
+Here's the template request you can use to perform this fun side-quest exercising your Right to Information and helping us improve our datasets!
+
+Take home the template.
+
+{{ btn(label="View full tutorial", href="https://docs.google.com/document/d/11nm_QN3a7fPKbZkAynjRRnbI_eoz71H7UkL4PsDg37Q/edit") }}
