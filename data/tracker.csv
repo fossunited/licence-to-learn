@@ -1,0 +1,45 @@
+type,institute,city,status,category,response
+NIT,NIT Delhi,Delhi,Responded,A,response_NITDL/R/E/25/00115.pdf
+NIT,NIT Durgapur,Durgapur,Responded,A,response_NITDP/R/E/25/00083.pdf
+NIT,NIT Meghalaya,Shillong,Responded,A,response_NITMG/R/E/25/00030.pdf
+NIT,NIT Pondicherry,Pondicherry,Responded,A,response_NITPD/R/E/25/00050.pdf
+NIT,NIT Kurukshetra,Kurukshetra,Responded,A,response_ NITKS/R/E/24/00146.pdf
+NIT,NIT Srinagar,Srinagar,Responded,A,response_NITSN/R/E/25/00143.pdf
+NIT,NIT Calicut,Calicut,Responded,B,response_NITCL/R/E/25/00076.pdf
+NIT,NIT Raipur,Raipur,Responded,B,response_NITRP/R/E/25/00117.pdf
+NIT,NIT Sikkim,Ravangala,Responded,B,response_NITSK/R/E/25/00051.pdf
+NIT,NIT Agartala,Agartala,Responded,B,response_NITAT/R/E/25/00082.pdf
+NIT,NIT Goa,Cuncolim,Responded,B,response_NITGO/R/E/25/00056.pdf
+NIT,NIT Trichy,Trichy,Responded,B,response_NITTI/R/E/25/00143.pdf
+NIT,NIT Arunachal Pradesh,Jote,No response,C,status_NITAP/R/E/25/00027.pdf
+NIT,NIT Hamirpur,Hamirpur,No response,C,status_NITHP/R/E/25/00071.pdf
+NIT,NIT Manipur,Imphal,No response,C,status_NITNG/R/E/25/00018.pdf
+NIT,NIT nagaland,Dimapur,No response,C,status_NITNG/R/E/25/00018.pdf
+NIT,NIT Patna,Patna,No response,C,status_NITPA/R/E/25/00105.pdf
+NIT,NIT Mizoram,Aizawl,Responded,C,response_NITMZ/R/E/25/00036.pdf
+NIT,NIT Rourkela,Rourkela,Responded,A,response_NITRK/R/E/25/00108.pdf
+IIM,IIM Amritsar,Amritsar,Responded,A,response_IIMAM/R/E/26/00027.pdf
+IIM,IIM Kashipur,Kashipur,Responded,A,response_IIMKP/R/E/26/00015.pdf
+IIM,IIM Trichy,Trichy,Responded,A,response_IIMTP/R/E/26/00030.pdf
+IIM,IIM Udaipur,Udaipur,Responded,A,response_IIMUD/R/E/26/00025.pdf
+IIM,IIM Jammu,Jammu,Responded,A,response_IIMJA/R/E/26/00030.pdf
+IIM,IIM Vishakhapatnam,Vishakhapatnam,Responded,A,response_IIMVP/R/E/26/00016.pdf
+IIM,IIM Calcutta,Kolkatta,Responded,A,response_IIMKO/R/E/26/00041.pdf
+IIM,IIM Indore,Indore,Responded,B,response_IIMIN/R/E/26/00055.pdf
+IIM,IIM Kozhikode,Kozhikode,Responded,B,response_IIMKK/R/E/26/00057.pdf
+IIM,IIM Bangalore,Bengaluru,Responded,B,response_IIMBL/R/E/26/00076.pdf
+IIM,IIM Sambhalpur,Sambhalpur,Responded,B,response_ IIMSB/R/E/26/00016.pdf
+IIM,IIM Ahmedabad,Ahmedabad,Responded,B,response_IIMAD/R/E/26/00049.pdf
+IIM,IIM Nagpur,Nagpur,Responded,B,response_IIMNP/R/E/26/00015.pdf
+IIM,IIM Raipur,Raipur,Responded,C,response_IIMRP/R/E/26/00028.pdf
+IIM,IIM Rohtak,Rohtak,Responded,C,response_IIMRK/R/E/26/00014.pdf
+IIM,IIM Sirmaur,Sirmaur,Responded,C,response_IIMSR/R/E/26/00015.pdf
+IIM,IIM Mumbai,Mumbai,Responded,C,response_NIEMU/R/E/26/00053.pdf
+IIM,IIM Bodhgaya,Bodhgaya,No response,C,status_IIMBG:R:E:26:00046.pdf
+IIM,IIM Ranchi,Ranchi,No response,C,status_IIMRN/R/E/26/00017.pdf
+IIIT,IIIT Una,Una,Responded,—,response_IIITU/R/E/26/00008.pdf
+IIIT,IIIT Vadodara,Vadodara,Responded,—,response_IIITV/R/E/26/00017.pdf
+IIIT,IIIT Nagpur,Nagpur,Responded,—,response_ IIITN/R/E/26/00012.pdf
+IIIT,IIIT Guwahati,Guwahati,Responded,—,response_IIITA/R/E/26/00123.pdf
+IIIT,IIIT Sonepat,Sonepat,Responded,—,response_IIISO/R/E/26/00013.pdf
+IIIT,IIIT Kota,Kota,Responded,—,response_ESTAB/R/E/26/00017.pdf
