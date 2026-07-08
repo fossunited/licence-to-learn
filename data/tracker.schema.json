@@ -43,7 +43,7 @@
       "x-display": {
         "label": "Response ref",
         "type": "link",
-        "base": "https://licensetolearn.in",
+        "base": "https://files.fossunited.org/RTIs/license-to-learn/",
         "sort": "text"
       }
     }
