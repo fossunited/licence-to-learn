@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reported annual software expenditure per institution (₹)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "institute",
+    "fy2020_21",
+    "fy2021_22",
+    "fy2022_23",
+    "fy2023_24",
+    "fy2024_25",
+    "total"
+  ],
+  "properties": {
+    "institute": {
+      "type": "string",
+      "minLength": 1,
+      "x-display": { "label": "Institute", "type": "text", "sort": "text" }
+    },
+    "fy2020_21": {
+      "type": "integer",
+      "minimum": 0,
+      "x-display": { "label": "2020-21", "type": "cost", "sort": "number" }
+    },
+    "fy2021_22": {
+      "type": "integer",
+      "minimum": 0,
+      "x-display": { "label": "2021-22", "type": "cost", "sort": "number" }
+    },
+    "fy2022_23": {
+      "type": "integer",
+      "minimum": 0,
+      "x-display": { "label": "2022-23", "type": "cost", "sort": "number" }
+    },
+    "fy2023_24": {
+      "type": "integer",
+      "minimum": 0,
+      "x-display": { "label": "2023-24", "type": "cost", "sort": "number" }
+    },
+    "fy2024_25": {
+      "type": "integer",
+      "minimum": 0,
+      "x-display": { "label": "2024-25", "type": "cost", "sort": "number" }
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 0,
+      "x-display": {
+        "label": "Total",
+        "type": "cost",
+        "highlight": true,
+        "sort": "number"
+      }
+    }
+  }
+}

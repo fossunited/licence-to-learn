@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RTI requests by institute and status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "institute", "city", "status", "category", "response"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["NIT", "IIM", "IIT", "IIIT", "AIIMS", "Other"],
+      "x-display": {
+        "label": "Type",
+        "type": "tag",
+        "sort": "text",
+        "filter": "select"
+      }
+    },
+    "institute": {
+      "type": "string",
+      "minLength": 1,
+      "x-display": { "label": "Institute", "type": "text", "sort": "text" }
+    },
+    "city": {
+      "type": "string",
+      "x-display": { "label": "City", "type": "text", "sort": "text" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Responded", "No response"],
+      "x-display": {
+        "label": "RTI status",
+        "type": "status",
+        "sort": "text",
+        "filter": "select"
+      }
+    },
+    "category": {
+      "type": "string",
+      "x-display": { "label": "Category", "type": "tag", "sort": "text" }
+    },
+    "response": {
+      "type": "string",
+      "x-display": {
+        "label": "Response ref",
+        "type": "link",
+        "base": "https://licensetolearn.in",
+        "sort": "text"
+      }
+    }
+  }
+}
