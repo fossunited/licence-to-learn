@@ -1,0 +1,7 @@
+# Relaxed: content is prose, not docs. Disable line-length + inline-HTML noise.
+default: true
+MD013: false # line length
+MD033: false # inline HTML (shortcodes / one-off markup)
+MD041: false # first line need not be a heading (front matter)
+MD034: false # bare URLs
+MD026: false # headings may end with ! or . (design copy)

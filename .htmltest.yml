@@ -1,0 +1,5 @@
+DirectoryPath: public
+CheckExternal: false # external links covered by `zola check`
+EnforceHTTPS: false
+IgnoreAltMissing: false # fail on images without alt text
+IgnoreEmptyHref: false

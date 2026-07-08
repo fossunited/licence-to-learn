@@ -1,0 +1,9 @@
+/public
+.direnv
+tmp.html
+/tmp
+
+# qsv validate failure artifacts
+data/*.csv.invalid
+data/*.csv.valid
+data/*.csv.validation-errors.tsv

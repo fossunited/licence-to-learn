@@ -1,0 +1,20 @@
+# Zola configuration | License to Learn
+base_url = "https://licensetolearn.in"
+title = "License to Learn"
+description = "Mapping every proprietary-software dependency across India's public universities."
+default_language = "en"
+
+# Build a tag/section taxonomy later if we filter cases by institute type.
+compile_sass = true
+minify_html = true
+generate_feeds = false
+
+[markdown]
+smart_punctuation = true
+render_emoji = false
+external_links_target_blank = true
+external_links_no_referrer = true
+
+[extra]
+# Site-wide values surfaced in templates.
+tagline = "Indian academia runs on software it doesn't own, can't audit, and could lose overnight."

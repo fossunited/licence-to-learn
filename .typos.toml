@@ -1,0 +1,7 @@
+[files]
+extend-exclude = ["public/", "notes/", "data/", "*.csv"]
+
+[default.extend-words]
+# Domain terms that aren't typos
+atmanirbharta = "atmanirbharta"
+FOSS = "FOSS"
