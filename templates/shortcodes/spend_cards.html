@@ -1,0 +1,32 @@
+{# One card per institute: name + 5-yr total + info popover + yearly line chart.
+   The tool count joins data/software.csv (institutions column, comma list) by
+   institute name at build time. {{ spend_cards(csv="data/costs.csv") }} #}
+{% set data = load_data(path=csv) %}
+{% set sw = load_data(path="data/software.csv") %}
+<div class="card-grid spend-cards">
+  {% for row in data.records %}
+    {% set inst = row[0] %}
+    {% set vals = row[1] ~ "," ~ row[2] ~ "," ~ row[3] ~ "," ~ row[4] ~ "," ~ row[5] %}
+    {% set_global tools = 0 %}
+    {% for s in sw.records %}
+      {% set insts = s[1] | split(pat=", ") %}
+      {% if inst in insts %}{% set_global tools = tools + 1 %}{% endif %}
+    {% endfor %}
+    <article class="spend-card">
+      <div class="spend-card__head">
+        <h3>{{ inst }}</h3>
+        <span class="spend-card__meta">
+          <span class="spend-card__total" data-inr="{{ row[6] }}">₹{{ row[6] }}</span>
+          <button type="button" class="card-info" aria-expanded="false"
+                  aria-label="{{ inst }} statistics" data-tools="{{ tools }}">i</button>
+        </span>
+      </div>
+      <div class="spend-card__stats" role="region" aria-label="{{ inst }} statistics" hidden></div>
+      <div class="linechart" data-values="{{ vals }}"
+           data-labels="2020-21,2021-22,2022-23,2023-24,2024-25"
+           role="img" aria-label="{{ inst }} software spend by year">
+        5-year total ₹{{ row[6] }}
+      </div>
+    </article>
+  {% endfor %}
+</div>

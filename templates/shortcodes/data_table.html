@@ -1,0 +1,3 @@
+{# {{ data_table(csv="data/software.csv", schema="data/software.schema.json", caption="...") }} #}
+{% import "macros/table.html" as t %}
+{{ t::render(csv=csv, schema=schema, caption=caption | default(value=""), enhance=enhance | default(value=true)) }}

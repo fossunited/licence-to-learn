@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "macros/ui.html" as ui %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ get_url(path='/') | safe }}">License to Learn</a></li>
+    <li><span aria-current="page">{{ section.title }}</span></li>
+  </ol>
+</nav>
+{% endblock %}
+
+{% block content %}
+<section class="wrap page">
+  <h1>{{ section.title }}</h1>
+  <div class="prose">{{ section.content | safe }}</div>
+
+  <div class="reasons" style="margin-block-start: 3rem">
+    {% for page in section.pages %}
+    <a class="nit" href="{{ page.permalink | safe }}">
+      <span class="nit__head"><h2>{{ page.title }}</h2>{{ ui::icon(name="arrow-up-right") }}</span>
+      {% if page.description %}<span class="nit__body">{{ page.description }}</span>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

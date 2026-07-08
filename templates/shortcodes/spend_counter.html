@@ -1,0 +1,32 @@
+{# Total reported spend, ticking up live from the reported total.
+   base  = sum of `total` column (reported 5-year spend), shown by default.
+   rate  = base / 90000 = total-annual (base/5) / 300 working days / 60, i.e.
+           one real viewing minute represents one working day of spend
+           (~₹7,373/sec here). Visible, and matches the "keep counting" story.
+           Anchored to page load, so it starts at the real total and climbs.
+   data-intervals = maintainer-editable redraw cadence in seconds.
+   {{ spend_counter(csv="data/costs.csv") }} #}
+{% set data = load_data(path=csv) %}
+{% set_global base = 0 %}
+{% set_global totals = [] %}
+{% set_global names = [] %}
+{% for row in data.records %}
+  {% set v = row[6] | int %}
+  {% set_global base = base + v %}
+  {% set_global totals = totals | concat(with=row[6]) %}
+  {% set_global names = names | concat(with=row[0]) %}
+{% endfor %}
+{% set rate = base / 90000 %}
+<div class="counter"
+     data-base="{{ base }}"
+     data-rate="{{ rate }}"
+     data-intervals="1,2,5,2"
+     data-totals="{{ totals | join(sep=',') }}"
+     data-names="{{ names | join(sep=',') }}"
+     aria-label="Total reported software spend, and counting">
+  <span class="counter__cur">₹</span><span class="odo" data-odo>{{ base }}</span>
+  <span class="counter__short" aria-hidden="true"></span>
+  <button type="button" class="counter__info" aria-expanded="false" aria-label="Spend statistics">i</button>
+  <div class="counter__stats" role="region" aria-label="Spend statistics" hidden></div>
+</div>
+<p class="counter__note">Reported software spend across responding institutes, and counting.</p>

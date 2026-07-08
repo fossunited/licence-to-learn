@@ -1,0 +1,3 @@
+{# {{ btn(label="Join the audit", href="/students/", variant="primary") }} #}
+{% import "macros/ui.html" as ui %}
+{{ ui::button(label=label, href=href, variant=variant | default(value="primary"), icon=icon | default(value="arrow-right")) }}

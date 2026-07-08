@@ -1,0 +1,68 @@
+{% import "macros/ui.html" as ui %}
+<!doctype html>
+<html lang="{{ lang | default(value='en') }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% set page_title = title | default(value=config.title) %}
+    <title>{% block title %}{{ page_title }}{% endblock %} · {{ config.title }}</title>
+    <meta name="description" content="{{ description | default(value=config.description) }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ get_url(path='img/logo.svg') | safe }}" />
+    <link rel="preload" as="font" type="font/woff2" href="{{ get_url(path='fonts/inter-400.woff2') | safe }}" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="{{ get_url(path='fonts/arvo-400.woff2') | safe }}" crossorigin />
+    <link rel="stylesheet" href="{{ get_url(path='css/fonts.css') | safe }}" />
+    <link rel="stylesheet" href="{{ get_url(path='css/main.css', cachebust=true) | safe }}" />
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="{{ get_url(path='/') | safe }}" aria-label="License to Learn — home">
+          <img src="{{ get_url(path='img/logo.svg') | safe }}" alt="License to Learn" width="90" height="30" />
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="{{ get_url(path='/data/') | safe }}">Data so far</a>
+          <a href="{{ get_url(path='/tracker/') | safe }}">RTI Tracker</a>
+          {{ ui::take_action(variant="nav") }}
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      {% block breadcrumb %}{% endblock %}
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-cols">
+          <div class="footer-brand">
+            <img src="{{ get_url(path='img/logo.svg') | safe }}" alt="License to Learn" width="108" height="36" loading="lazy" decoding="async" />
+            <span class="by">by <b>FOSS United</b></span>
+          </div>
+          <nav class="footer-col" aria-label="Site">
+            <a href="https://fossunited.org">FOSS United</a>
+            <a href="{{ get_url(path='/data/') | safe }}">Data so Far</a>
+            <a href="{{ get_url(path='/tracker/') | safe }}">RTI Tracker</a>
+          </nav>
+          <nav class="footer-col" aria-label="Get involved">
+            <a href="{{ get_url(path='/students/') | safe }}">For Students</a>
+            <a href="{{ get_url(path='/vendors/') | safe }}">For FOSS Vendors</a>
+            {# WIP: institutions page is a draft. Re-enable when published.
+            <a href="{{ get_url(path='/institutions/') | safe }}">For Institutions</a>
+            #}
+          </nav>
+        </div>
+        <p class="footer-mail">
+          {{ ui::icon(name="mail") }}
+          <a href="mailto:foundation@fossunited.org">foundation@fossunited.org</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="{{ get_url(path='js/nav.js', cachebust=true) | safe }}" defer></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

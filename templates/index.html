@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import "macros/ui.html" as ui %}
+
+{% block content %}
+{% set e = section.extra %}
+<div class="wrap stack-100">
+
+  <section class="hero">
+    <div class="hero__text">
+      <div class="hero__copy">
+        <h1>{{ e.hero_title | default(value=config.extra.tagline) }}</h1>
+        <p class="hero__lede">{{ e.hero_lede | default(value=config.description) }}</p>
+      </div>
+      <div class="hero__actions">
+        {{ ui::button(label="Data so far", href=get_url(path='/data/'), variant="primary", icon="arrow-right") }}
+        {{ ui::take_action(variant="ghost") }}
+      </div>
+    </div>
+    <div class="hero__art">
+      <img src="{{ get_url(path='img/hero-books.webp') | safe }}" alt="A padlocked stack of books breaking free of its chains." width="280" height="330" decoding="async" fetchpriority="high" />
+    </div>
+  </section>
+
+  {% if e.nit %}
+  <a class="nit" href="{{ e.nit.href | safe }}">
+    <span class="nit__head">
+      <h2>The NITs case:</h2>
+      {{ ui::icon(name="arrow-up-right") }}
+    </span>
+    <span class="nit__body">{{ e.nit.body | markdown(inline=true) | safe }}</span>
+    {% if e.nit.note %}<span class="nit__note">{{ e.nit.note }}</span>{% endif %}
+  </a>
+  {% endif %}
+
+  <section class="reasons">
+    {% for r in e.reasons | default(value=[]) %}
+      {{ ui::reason(title=r.title, body=r.body, art=r.art | default(value="")) }}
+    {% endfor %}
+  </section>
+
+</div>
+{% endblock %}

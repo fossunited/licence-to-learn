@@ -1,0 +1,5 @@
+{# Block shortcode: {% quote(author="…") %} body {% end %} #}
+<blockquote class="quote">
+  {{ body | markdown(inline=true) | safe }}
+  {% if author %}<cite>{{ author }}</cite>{% endif %}
+</blockquote>

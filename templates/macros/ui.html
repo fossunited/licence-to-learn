@@ -1,0 +1,62 @@
+{# Reusable UI. Import: {% import "macros/ui.html" as ui %} #}
+
+{# Tabler-style inline icons (stroke = currentColor). For external callers. #}
+{% macro icon(name) %}
+<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{%- if name == "arrow-right" -%}
+  <path d="M5 12h14"/><path d="M13 6l6 6l-6 6"/>
+{%- elif name == "chevron-down" -%}
+  <path d="M6 9l6 6l6 -6"/>
+{%- elif name == "arrow-up-right" -%}
+  <path d="M17 7l-10 10"/><path d="M8 7h9v9"/>
+{%- elif name == "mail" -%}
+  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path d="M3 7l9 6l9 -6"/>
+{%- endif -%}
+</svg>
+{% endmacro icon %}
+
+{# Button / link. icon: arrow-right (default), chevron-down, or "" for none. #}
+{% macro button(label, href, variant="primary", icon="arrow-right") %}
+<a class="btn btn--{{ variant }}" href="{{ href | safe }}">
+  <span>{{ label }}</span>
+  {%- if icon -%}
+  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {%- if icon == "chevron-down" -%}<path d="M6 9l6 6l6 -6"/>{%- else -%}<path d="M5 12h14"/><path d="M13 6l6 6l-6 6"/>{%- endif -%}
+  </svg>
+  {%- endif -%}
+</a>
+{% endmacro button %}
+
+{# "Take Action" dropdown (CSS-only, details/summary). variant: nav | ghost #}
+{% macro take_action(variant="nav") %}
+<details class="menu">
+  <summary class="btn {% if variant == 'ghost' %}btn--ghost{% else %}btn--surface{% endif %}">
+    <span>Take Action</span>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6l6 -6"/></svg>
+  </summary>
+  <div class="menu__panel">
+    <a href="{{ get_url(path='/students/') | safe }}">For Students</a>
+    <a href="{{ get_url(path='/vendors/') | safe }}">For FOSS Vendors</a>
+    {# WIP: institutions page is a draft. Re-enable when published.
+    <a href="{{ get_url(path='/institutions/') | safe }}">For Institutions</a>
+    #}
+  </div>
+</details>
+{% endmacro take_action %}
+
+{# Reason block: square art (optional image) + heading + body paragraphs #}
+{% macro reason(title, body, art="") %}
+<div class="reason">
+  {# WIP: illustrations not ready. Re-enable when art files exist in static/img/.
+  <div class="reason__art">
+    {% if art and art is matching("\.(svg|png|jpg|jpeg|webp)$") %}
+      <img src="{{ get_url(path='img/' ~ art) | safe }}" alt="" loading="lazy" decoding="async" />
+    {% endif %}
+  </div>
+  #}
+  <div class="reason__text">
+    <h2>{{ title }}</h2>
+    <div class="reason__body">{{ body | markdown | safe }}</div>
+  </div>
+</div>
+{% endmacro reason %}

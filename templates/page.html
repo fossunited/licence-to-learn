@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+<nav class="breadcrumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ get_url(path='/') | safe }}">License to Learn</a></li>
+    {% if page.components | length > 1 %}
+      {% set sec = page.components | first %}
+      <li><a href="{{ get_url(path='/' ~ sec ~ '/') | safe }}">{{ sec | replace(from='-', to=' ') | title }}</a></li>
+    {% endif %}
+    <li><span aria-current="page">{{ page.title }}</span></li>
+  </ol>
+</nav>
+{% endblock %}
+
+{% block content %}
+<article class="wrap page">
+  <h1>{{ page.extra.heading | default(value=page.title) }}</h1>
+  <div class="prose">{{ page.content | safe }}</div>
+</article>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ get_url(path='js/table.js', cachebust=true) | safe }}" defer></script>
+  <script src="{{ get_url(path='js/chart.js', cachebust=true) | safe }}" defer></script>
+  <script src="{{ get_url(path='js/spend.js', cachebust=true) | safe }}" defer></script>
+{% endblock %}

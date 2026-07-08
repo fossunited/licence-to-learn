@@ -1,0 +1,71 @@
+{# Render a CSV as a styled, accessible, static <table>.
+   Per-column presentation comes from the sibling JSON Schema's `x-display`
+   keys, so data (CSV) and design (schema + CSS) stay separate.
+   Import: {% import "macros/table.html" as t %}
+   Use:    {{ t::render(csv="data/x.csv", schema="data/x.schema.json") }} #}
+
+{# Every column in the CSV must have a matching property with `x-display`
+   in the schema (qsv's additionalProperties:false keeps them in sync). #}
+{% macro render(csv, schema, caption="", enhance=true) %}
+{% set data = load_data(path=csv) %}
+{% set sch = load_data(path=schema) %}
+{% set props = sch.properties %}
+<figure class="table-fig">
+  {% if caption %}<figcaption>{{ caption }}</figcaption>{% endif %}
+  <div class="table-wrap">
+    <table class="dtable"{% if enhance %} data-enhance{% endif %}>
+      <thead>
+        <tr>
+          {% for h in data.headers %}
+            {% set d = props[h]["x-display"] %}
+            <th scope="col" data-col="{{ h }}" data-sort="{{ d.sort | default(value='text') }}"{% if d.filter %} data-filter="{{ d.filter }}"{% endif %}>
+              <span class="th-label">{{ d.label | default(value=h) }}</span>
+            </th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data.records %}
+        <tr>
+          {% for cell in row %}
+            {% set d = props[data.headers[loop.index0]]["x-display"] %}
+            {% set type = d.type | default(value="text") %}
+            {% if type == "tag" %}
+              <td class="col--tag" data-val="{{ cell }}" title="{{ cell }}">
+                <span class="pill {{ d.class | default(value='') }}">{{ cell }}</span>
+              </td>
+            {% elif type == "status" %}
+              <td class="col--status" data-val="{{ cell }}">
+                <span class="pill pill--status status--{{ cell | lower | replace(from=' ', to='-') }}">{{ cell }}</span>
+              </td>
+            {% elif type == "cost" %}
+              <td class="col--cost{% if d.highlight %} is-high{% endif %}" data-val="{{ cell }}">{{ cell }}</td>
+            {% elif type == "link" %}
+              {# One or more comma-separated files; base is the host prefix. #}
+              {% set base = d.base | default(value="") %}
+              <td class="col--link" data-val="{{ cell }}" title="{{ cell }}">
+                {% if cell and cell != "—" %}
+                  {% for f in cell | split(pat=",") %}
+                    {% set name = f | trim %}
+                    {% if name %}
+                      {% if not name is matching("\.[A-Za-z0-9]+$") %}{% set name = name ~ ".pdf" %}{% endif %}
+                      <a href="{{ base }}{{ name }}" target="_blank" rel="noopener noreferrer">{{ d.link_text | default(value=name) }}</a>{% if not loop.last %}, {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                {% else %}—{% endif %}
+              </td>
+            {% elif d.count_prefix %}
+              {% set n = 0 %}
+              {% if cell and cell != "—" %}{% set n = cell | split(pat=",") | length %}{% endif %}
+              <td class="col--text" data-val="{{ n }}" title="{{ cell }}"><span class="count-badge">{{ n }}</span> {{ cell }}</td>
+            {% else %}
+              <td class="col--text" data-val="{{ cell }}" title="{{ cell }}">{{ cell }}</td>
+            {% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</figure>
+{% endmacro render %}
