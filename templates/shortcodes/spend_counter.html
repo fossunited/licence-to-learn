@@ -3,7 +3,10 @@
    rate  = base / 90000 = total-annual (base/5) / 300 working days / 60, i.e.
            one real viewing minute represents one working day of spend
            (~₹7,373/sec here). Visible, and matches the "keep counting" story.
-           Anchored to page load, so it starts at the real total and climbs.
+   epoch = build time (unix seconds). Two JS modes read the same base/rate:
+           "session" anchors to page load (resets to base on every visit,
+           the default); "progressive" anchors to epoch, so the value keeps
+           climbing across visits/days and never resets until the next build.
    data-intervals = maintainer-editable redraw cadence in seconds.
    {{ spend_counter(csv="data/costs.csv") }} #}
 {% set data = load_data(path=csv) %}
@@ -17,9 +20,11 @@
   {% set_global names = names | concat(with=row[0]) %}
 {% endfor %}
 {% set rate = base / 90000 %}
+{% set epoch = now(timestamp=true) %}
 <div class="counter"
      data-base="{{ base }}"
      data-rate="{{ rate }}"
+     data-epoch="{{ epoch }}"
      data-intervals="1,2,5,2"
      data-totals="{{ totals | join(sep=',') }}"
      data-names="{{ names | join(sep=',') }}"

@@ -1,11 +1,19 @@
 /* Live "total reported spend" counter. Starts at the reported total (base) and
-   climbs from page load: value = base + rate * secondsSinceLoad, Indian-grouped,
-   digits roll. Redraw cadence cycles through data-intervals (seconds) so the
-   tick feels alive. prefers-reduced-motion -> static total, no motion.
+   climbs: value = base + rate * secondsSince(anchor), Indian-grouped, digits
+   roll. Anchor is page load in "session" mode (default, resets on reload) or
+   build time (data-epoch) in "progressive" mode (keeps climbing across visits
+   until the next rebuild) - see COUNTER_MODE below. Redraw cadence cycles
+   through data-intervals (seconds) so the tick feels alive.
+   prefers-reduced-motion -> static total, no motion.
    Also wires the stats popovers: one for the total (.counter__info) and one per
    spend card (.card-info, showing yearly stats + software-tools count). */
 (() => {
   "use strict";
+  // "session" (default): anchors to page load, starts at the reported total
+  //   and climbs for this visit only, resets on reload.
+  // "progressive": anchors to build time (data-epoch), keeps climbing across
+  //   visits/days, only resets on the next site rebuild.
+  const COUNTER_MODE = "progressive"; // "session" | "progressive"
   const fmt = new Intl.NumberFormat("en-IN");
   const money = new Intl.NumberFormat("en-IN", {
     style: "currency", currency: "INR", maximumFractionDigits: 0,
@@ -55,6 +63,8 @@
     if (!out) return;
     const base = num(c.dataset.base);
     const rate = num(c.dataset.rate);
+    const epoch = num(c.dataset.epoch);
+    const progressive = COUNTER_MODE === "progressive" && epoch > 0;
 
     let len = 0;
     let slots = []; // per char: {stack} for digits, null for separators
@@ -86,11 +96,12 @@
       if (shortEl) { const s = shortINR(n); shortEl.textContent = s ? `(${s})` : ""; }
     };
 
-    // Starts at the reported total and climbs from page load, so the viewer
-    // sees it counting up live. Value is derived from elapsed time (not an
-    // accumulator), so redraw cadence never causes drift.
+    // Value is derived from Date.now(), never an accumulator, so redraw
+    // cadence never causes drift.
     const t0 = Date.now();
-    const value = () => base + rate * ((Date.now() - t0) / 1000);
+    const value = () => progressive
+      ? base + rate * (Date.now() / 1000 - epoch)
+      : base + rate * ((Date.now() - t0) / 1000);
 
     if (reduce || !rate) {
       render(value());
