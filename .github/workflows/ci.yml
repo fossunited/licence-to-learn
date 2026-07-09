@@ -7,41 +7,34 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  checks:
+  # Build only for now (lint/data-validate/htmltest are manual, see justfile check).
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: checkout
+        uses: actions/checkout@v4
 
-      # Each check runs inside the pinned shell.nix, identical to local dev.
-      - name: Validate data (CSV ↔ JSON Schema)
-        run: nix-shell --run "just check-data"
-      - name: Lint (TOML / CSS / Markdown / spelling)
-        run: nix-shell --run "just lint"
-      - name: Check links
-        run: nix-shell --run "zola check"
-      - name: Build + HTML check (links / alt / anchors)
-        run: nix-shell --run "just check-html"
-
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Build Zola + upload Pages artifact
+        uses: getzola/github-pages@066755243e69f508fd1a74739fbf1a65f656c790
         with:
-          path: public
+          zola_version: v0.22.1
 
-  # Deploy only if `checks` is green, and only on main.
   deploy:
-    needs: checks
+    needs: build
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deploy
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
