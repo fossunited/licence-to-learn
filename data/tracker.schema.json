@@ -36,7 +36,14 @@
     },
     "category": {
       "type": "string",
-      "x-display": { "label": "Category", "type": "tag", "sort": "text" }
+      "enum": ["A", "B", "C"],
+      "description": "How helpful the institute's response was: A = helpful, B = partially helpful, C = not helpful.",
+      "x-display": {
+        "label": "Category",
+        "type": "rating",
+        "sort": "text",
+        "filter": "select"
+      }
     },
     "response": {
       "type": "string",

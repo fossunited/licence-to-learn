@@ -29,10 +29,12 @@
     const fig = table.closest(".table-fig");
     const total = rowsOf().length;
 
-    // 1. ₹ grouping on cost cells (raw number stays in data-val for sorting)
+    // 1. ₹ grouping on cost cells (raw number stays in data-val for sorting).
+    // 0 means not provided/collected, not an actual ₹0 spend - shown as NA.
     table.querySelectorAll("td.col--cost[data-val]").forEach((td) => {
       const n = Number(td.dataset.val);
       if (!Number.isFinite(n)) return;
+      if (n === 0) { td.textContent = "NA"; return; }
       const s = shortINR(n);
       td.textContent = s ? `${inr.format(n)} (${s})` : inr.format(n);
     });
@@ -89,15 +91,22 @@
     const filters = [];
     heads.forEach((th, col) => {
       const cell = tbody.rows[0]?.cells[col];
-      if (!cell || !cell.matches(".col--tag, .col--status")) return;
+      if (!cell || !cell.matches(".col--tag, .col--status, .col--rating")) return;
       // Opt-in: only columns with x-display.filter (non-multi) get a dropdown.
       if (!th.dataset.filter || th.dataset.filter === "multi") return;
-      const values = [...new Set(rowsOf().map((r) => r.cells[col].dataset.val).filter(Boolean))].sort();
+      // value = raw data-val (what filtering matches against), label = the
+      // rendered cell text (e.g. rating cells show "Helpful", not "A").
+      const seen = new Map();
+      rowsOf().forEach((r) => {
+        const c = r.cells[col];
+        if (c.dataset.val) seen.set(c.dataset.val, c.textContent.trim());
+      });
+      const values = [...seen.keys()].sort();
       const sel = document.createElement("select");
       const name = th.textContent.trim();
       sel.setAttribute("aria-label", `Filter by ${name}`);
       sel.append(new Option(`All ${name}`, ""));
-      values.forEach((v) => sel.append(new Option(v, v)));
+      values.forEach((v) => sel.append(new Option(seen.get(v), v)));
       sel.dataset.col = col;
       filters.push(sel);
       filtersRow.append(sel);

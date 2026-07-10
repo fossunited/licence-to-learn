@@ -3,6 +3,7 @@
    keys, so data (CSV) and design (schema + CSS) stay separate.
    Import: {% import "macros/table.html" as t %}
    Use:    {{ t::render(csv="data/x.csv", schema="data/x.schema.json") }} #}
+{% import "macros/ui.html" as ui %}
 
 {# Every column in the CSV must have a matching property with `x-display`
    in the schema (qsv's additionalProperties:false keeps them in sync). #}
@@ -30,7 +31,17 @@
           {% for cell in row %}
             {% set d = props[data.headers[loop.index0]]["x-display"] %}
             {% set type = d.type | default(value="text") %}
-            {% if type == "tag" %}
+            {% if type == "rating" %}
+              {% set r = cell | upper %}
+              {% set label = cell %}
+              {% if r == "A" %}{% set label = "Helpful" %}
+              {% elif r == "B" %}{% set label = "Partially helpful" %}
+              {% elif r == "C" %}{% set label = "Not helpful" %}
+              {% endif %}
+              <td class="col--rating" data-val="{{ cell }}" title="{{ label }}">
+                <span class="pill pill--status rating--{{ r | lower }}">{{ label }}</span>
+              </td>
+            {% elif type == "tag" %}
               <td class="col--tag" data-val="{{ cell }}" title="{{ cell }}">
                 <span class="pill {{ d.class | default(value='') }}">{{ cell }}</span>
               </td>
@@ -39,9 +50,11 @@
                 <span class="pill pill--status status--{{ cell | lower | replace(from=' ', to='-') }}">{{ cell }}</span>
               </td>
             {% elif type == "cost" %}
-              <td class="col--cost{% if d.highlight %} is-high{% endif %}" data-val="{{ cell }}">{{ cell }}</td>
+              {# 0 means not provided/collected, not an actual ₹0 spend. #}
+              <td class="col--cost{% if d.highlight %} is-high{% endif %}" data-val="{{ cell }}">{% if cell == "0" %}NA{% else %}{{ cell }}{% endif %}</td>
             {% elif type == "link" %}
-              {# One or more comma-separated files; base is the host prefix. #}
+              {# One or more comma-separated files; base is the host prefix.
+                 Icon-only link(s) (not the raw filename/URL as text). #}
               {% set base = d.base | default(value="") %}
               <td class="col--link" data-val="{{ cell }}" title="{{ cell }}">
                 {% if cell and cell != "—" %}
@@ -49,7 +62,7 @@
                     {% set name = f | trim %}
                     {% if name %}
                       {% if not name is matching("\.[A-Za-z0-9]+$") %}{% set name = name ~ ".pdf" %}{% endif %}
-                      <a href="{{ base }}{{ name }}" target="_blank" rel="noopener noreferrer">{{ d.link_text | default(value=name) }}</a>{% if not loop.last %}, {% endif %}
+                      <a href="{{ base }}{{ name }}" target="_blank" rel="noopener noreferrer" aria-label="Download {{ d.link_text | default(value=name) }}" title="{{ name }}">{{ ui::icon(name="download") }}</a>
                     {% endif %}
                   {% endfor %}
                 {% else %}—{% endif %}
