@@ -3,7 +3,7 @@ title = "Data so far"
 description = "Machine-readable data built from RTI responses. Software, the institutions that use it, and what it costs."
 +++
 
-## Total Amount being spent
+## Total Amount being spent {{ info_tip(text="This live figure is extrapolated: the total reported spend collected from FY2020-21 to FY2024-25, spread evenly across working days since, not a verified real-time total.", for_id="spend-counter") }}
 
 {{ spend_counter(csv="data/costs.csv") }}
 

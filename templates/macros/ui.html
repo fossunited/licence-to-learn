@@ -2,7 +2,7 @@
 
 {# Tabler-style inline icons (stroke = currentColor). For external callers. #}
 {% macro icon(name) %}
-<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 {%- if name == "arrow-right" -%}
   <path d="M5 12h14"/><path d="M13 6l6 6l-6 6"/>
 {%- elif name == "chevron-down" -%}
@@ -24,7 +24,7 @@
 <a class="btn btn--{{ variant }}" href="{{ href | safe }}">
   <span>{{ label }}</span>
   {%- if icon -%}
-  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
   {%- if icon == "chevron-down" -%}<path d="M6 9l6 6l6 -6"/>{%- else -%}<path d="M5 12h14"/><path d="M13 6l6 6l-6 6"/>{%- endif -%}
   </svg>
   {%- endif -%}
@@ -36,7 +36,7 @@
 <details class="menu">
   <summary class="btn {% if variant == 'ghost' %}btn--ghost{% else %}btn--surface{% endif %}">
     <span>Take Action</span>
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6l6 -6"/></svg>
+    <svg class="icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6l6 -6"/></svg>
   </summary>
   <div class="menu__panel">
     <a href="{{ get_url(path='/students/') | safe }}">For Students</a>

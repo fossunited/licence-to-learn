@@ -180,4 +180,22 @@
     </dl>`;
     wirePopover(card, btn, pop);
   });
+
+  // --- Generic inline "?" info tips (info_tip shortcode) ---
+  document.querySelectorAll(".info-tip").forEach((tip) => {
+    const btn = tip.querySelector(".info-tip__btn");
+    const pop = tip.querySelector(".info-tip__panel");
+    if (!btn || !pop) return;
+    // If for_id points at a [data-base] element (e.g. the spend counter),
+    // append the real reported total so readers see what the live number
+    // is extrapolated from.
+    const target = tip.dataset.for && document.getElementById(tip.dataset.for);
+    if (target && target.dataset.base) {
+      const actual = document.createElement("span");
+      actual.className = "info-tip__actual";
+      actual.textContent = `Actual reported total so far: ${withShort(num(target.dataset.base))}.`;
+      pop.append(actual);
+    }
+    wirePopover(tip, btn, pop);
+  });
 })();

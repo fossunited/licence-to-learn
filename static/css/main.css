@@ -190,15 +190,6 @@ main {
     inline-size: 20px;
     block-size: 20px;
   }
-  & .icon:last-child {
-    display: none;
-  }
-  &[aria-expanded="true"] .icon:first-child {
-    display: none;
-  }
-  &[aria-expanded="true"] .icon:last-child {
-    display: block;
-  }
 }
 .brand {
   display: inline-flex;
@@ -841,6 +832,57 @@ main {
 @media (prefers-reduced-motion: reduce) {
   .odo-stack {
     transition: none;
+  }
+}
+.info-tip {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-inline-start: 0.4rem;
+}
+.info-tip__btn {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--accent);
+  }
+}
+.info-tip__panel {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  z-index: 5;
+  margin-block-start: 0.5rem;
+  inline-size: max-content;
+  max-inline-size: 18rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.85rem;
+  color: var(--body);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  box-shadow: 0 8px 24px oklch(0% 0 0 / 0.35);
+
+  & .info-tip__actual {
+    display: block;
+    margin-block-start: 0.5rem;
+    color: var(--heading);
+    font-weight: 600;
   }
 }
 .counter__info {
