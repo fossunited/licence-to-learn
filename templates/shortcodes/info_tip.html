@@ -1,9 +1,6 @@
 {# Inline "?" info tip. Use next to a heading to caveat/explain it.
-   {{ info_tip(text="This is extrapolated, not a verified total.") }}
-   for_id: id of a [data-base] element (e.g. a .counter) whose reported total
-   spend.js appends to the panel, so readers see the real figure the live
-   number is extrapolated from. #}
-<span class="info-tip"{% if for_id is defined and for_id %} data-for="{{ for_id }}"{% endif %}>
+   {{ info_tip(text="This is a caveat about the heading it sits next to.") }} #}
+<span class="info-tip">
   <button type="button" class="info-tip__btn" aria-expanded="false" aria-label="More info">?</button>
   <span class="info-tip__panel" role="tooltip" hidden>{{ text | markdown(inline=true) | safe }}</span>
 </span>

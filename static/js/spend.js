@@ -1,27 +1,13 @@
-/* Live "total reported spend" counter. Starts at the reported total (base) and
-   climbs: value = base + rate * secondsSince(anchor), Indian-grouped, digits
-   roll. Anchor is page load in "session" mode (default, resets on reload) or
-   a fixed reference date (data-epoch, set in the spend_counter shortcode,
-   NOT build time) in "progressive" mode, so the value is a deterministic
-   function of real calendar time, same across every rebuild/deploy - see
-   COUNTER_MODE below. Redraw cadence cycles through data-intervals (seconds)
-   so the tick feels alive.
-   prefers-reduced-motion -> static total, no motion.
-   Also wires the stats popovers: one for the total (.counter__info) and one per
-   spend card (.card-info, showing yearly stats + software-tools count). */
+/* Static "total reported spend" figure, Indian-grouped with a compact
+   short suffix. Also wires the stats popovers: one for the total
+   (.counter__info) and one per spend card (.card-info, showing yearly
+   stats + software-tools count). */
 (() => {
   "use strict";
-  // "session" (default): anchors to page load, starts at the reported total
-  //   and climbs for this visit only, resets on reload.
-  // "progressive": anchors to data-epoch (a fixed date, see spend_counter
-  //   shortcode), keeps climbing across visits/days/rebuilds, deterministic
-  //   for a given real moment regardless of when the site was last built.
-  const COUNTER_MODE = "progressive"; // "session" | "progressive"
   const fmt = new Intl.NumberFormat("en-IN");
   const money = new Intl.NumberFormat("en-IN", {
     style: "currency", currency: "INR", maximumFractionDigits: 0,
   });
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   // Missing / NaN / empty cells count as 0.
   const num = (v) => { const n = Number(v); return Number.isFinite(n) ? n : 0; };
   // Compact suffix shown in brackets beside a full ₹ number: "2.3 Cr" / "1.5 L".
@@ -46,83 +32,14 @@
     document.addEventListener("click", (e) => { if (!container.contains(e.target)) open(false); });
   };
 
-  const digit = () => {
-    const wrap = document.createElement("span");
-    wrap.className = "odo-digit";
-    const stack = document.createElement("span");
-    stack.className = "odo-stack";
-    for (let d = 0; d < 10; d++) {
-      const s = document.createElement("span");
-      s.textContent = d;
-      stack.append(s);
-    }
-    wrap.append(stack);
-    return wrap;
-  };
-
-  // --- Live total counter ---
+  // --- Total figure (static): Indian-grouped + compact short suffix ---
   document.querySelectorAll(".counter").forEach((c) => {
     const out = c.querySelector("[data-odo]");
     if (!out) return;
     const base = num(c.dataset.base);
-    const rate = num(c.dataset.rate);
-    const rateAnnual = num(c.dataset.rateAnnual);
-    const epoch = num(c.dataset.epoch);
-    const progressive = COUNTER_MODE === "progressive" && epoch > 0;
-
-    let len = 0;
-    let slots = []; // per char: {stack} for digits, null for separators
-    const rebuild = (str) => {
-      out.textContent = "";
-      slots = [...str].map((ch) => {
-        if (ch < "0" || ch > "9") {
-          const sep = document.createElement("span");
-          sep.className = "odo-sep";
-          sep.textContent = ch;
-          out.append(sep);
-          return null;
-        }
-        const d = digit();
-        out.append(d);
-        return d.firstChild; // the .odo-stack
-      });
-      len = str.length;
-    };
+    out.textContent = fmt.format(base);
     const shortEl = c.querySelector(".counter__short");
-    const render = (val) => {
-      const n = Math.floor(val);
-      const str = fmt.format(n);
-      if (str.length !== len) rebuild(str);
-      [...str].forEach((ch, i) => {
-        const stack = slots[i];
-        if (stack && ch >= "0" && ch <= "9") stack.style.translate = `0 ${-ch}em`;
-      });
-      if (shortEl) { const s = shortINR(n); shortEl.textContent = s ? `(${s})` : ""; }
-    };
-
-    // Value is derived from Date.now(), never an accumulator, so redraw
-    // cadence never causes drift.
-    const t0 = Date.now();
-    const value = () => progressive
-      ? base + rateAnnual * (Date.now() / 1000 - epoch)
-      : base + rate * ((Date.now() - t0) / 1000);
-
-    if (reduce || !rate) {
-      render(value());
-      return;
-    }
-
-    // Redraw cadence: cycle through data-intervals seconds (fallback single).
-    const seq = (c.dataset.intervals || "")
-      .split(",").map((s) => Number(s.trim())).filter((n) => n > 0);
-    const single = Number(c.dataset.interval) || 1000;
-    let i = 0;
-    const tick = () => {
-      render(value());
-      const ms = seq.length ? seq[i++ % seq.length] * 1000 : single;
-      setTimeout(tick, ms);
-    };
-    tick();
+    if (shortEl) { const s = shortINR(base); shortEl.textContent = s ? `(${s})` : ""; }
   });
 
   // --- Total stats popover (from data-totals / data-names) ---
@@ -189,17 +106,6 @@
   document.querySelectorAll(".info-tip").forEach((tip) => {
     const btn = tip.querySelector(".info-tip__btn");
     const pop = tip.querySelector(".info-tip__panel");
-    if (!btn || !pop) return;
-    // If for_id points at a [data-base] element (e.g. the spend counter),
-    // append the real reported total so readers see what the live number
-    // is extrapolated from.
-    const target = tip.dataset.for && document.getElementById(tip.dataset.for);
-    if (target && target.dataset.base) {
-      const actual = document.createElement("span");
-      actual.className = "info-tip__actual";
-      actual.textContent = `Actual reported total so far: ${withShort(num(target.dataset.base))}.`;
-      pop.append(actual);
-    }
-    wirePopover(tip, btn, pop);
+    if (btn && pop) wirePopover(tip, btn, pop);
   });
 })();

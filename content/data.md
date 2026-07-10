@@ -3,7 +3,7 @@ title = "Data so far"
 description = "Machine-readable data built from RTI responses. Software, the institutions that use it, and what it costs."
 +++
 
-## Total Amount being spent {{ info_tip(text="This live figure is extrapolated: the total reported spend collected from FY2020-21 to FY2024-25, spread evenly across working days since, not a verified real-time total.", for_id="spend-counter") }}
+## Total Amount spent so far {{ info_tip(text="This is the total reported spend collected from FY2020-21 to FY2024-25.") }}
 
 {{ spend_counter(csv="data/costs.csv") }}
 
@@ -12,10 +12,6 @@ description = "Machine-readable data built from RTI responses. Software, the ins
 Yearly software expenditure reported by each responding institute. Hover or focus a point to see the amount.
 
 {{ spend_cards(csv="data/costs.csv") }}
-
-## All institutes together
-
-{{ spend_lines(csv="data/costs.csv") }}
 
 ## Software & where it's used
 

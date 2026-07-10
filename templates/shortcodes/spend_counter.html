@@ -1,32 +1,7 @@
-{# Total reported spend, ticking up live from the reported total.
-   base  = sum of `total` column (reported spend across `years` FYs), shown
-           by default.
-   years = header count minus `institute` and `total` (the FY columns in
-           between), so adding another fy2025_26-style column to the CSV/
-           schema grows this automatically, nothing to edit here.
-   rate  = base / 90000 = total-annual (base/years) / 300 working days / 60,
-           i.e. one real viewing minute represents one working day of spend
-           (~₹7,373/sec here). A sped-up visual effect for "session" mode
-           only (resets every page load, so elapsed time is always a few
-           minutes) - NOT a real annual rate, it would re-add the whole
-           multi-year base every ~25 real hours if left running.
-   rate_annual = (base / years) / (365 * 24 * 60 * 60), i.e. the average
-           single year's spend spread over the seconds in a real year. The
-           true historical average, used by "progressive" mode so the value
-           extrapolates sensibly over real elapsed calendar time instead of
-           exploding.
-   epoch = a fixed reference date, NOT build time: 2025-04-01 00:00 IST, the
-           day after FY2024-25 (the last reported year) ends. "session"
-           anchors to page load (resets to base every visit, the default);
-           "progressive" anchors to epoch with rate_annual, so the value is
-           a deterministic function of real calendar time and comes out
-           identical across rebuilds/deploys, it only needs bumping forward
-           when a new FY's data is reported.
-   data-intervals = maintainer-editable redraw cadence in seconds.
+{# Total reported spend (static), plus a stats popover (mean/median/highest/
+   lowest across responding institutes). base = sum of the `total` column.
    {{ spend_counter(csv="data/costs.csv") }} #}
 {% set data = load_data(path=csv) %}
-{% set header_count = data.headers | length %}
-{% set years = header_count - 2 %}
 {% set_global base = 0 %}
 {% set_global totals = [] %}
 {% set_global names = [] %}
@@ -36,22 +11,15 @@
   {% set_global totals = totals | concat(with=row[6]) %}
   {% set_global names = names | concat(with=row[0]) %}
 {% endfor %}
-{% set rate = base / 90000 %}
-{% set rate_annual = base / years / (365 * 24 * 60 * 60) %}
-{% set epoch = 1743445800 %}
 <div class="counter"
      id="spend-counter"
      data-base="{{ base }}"
-     data-rate="{{ rate }}"
-     data-rate-annual="{{ rate_annual }}"
-     data-epoch="{{ epoch }}"
-     data-intervals="1,2,5,2"
      data-totals="{{ totals | join(sep=',') }}"
      data-names="{{ names | join(sep=',') }}"
-     aria-label="Total reported software spend, and counting">
+     aria-label="Total reported software spend">
   <span class="counter__cur">₹</span><span class="odo" data-odo>{{ base }}</span>
   <span class="counter__short" aria-hidden="true"></span>
   <button type="button" class="counter__info" aria-expanded="false" aria-label="Spend statistics">i</button>
   <div class="counter__stats" role="region" aria-label="Spend statistics" hidden></div>
 </div>
-<p class="counter__note">Reported software spend across responding institutes, and counting.</p>
+<p class="counter__note">Total reported software spend across responding institutes.</p>
