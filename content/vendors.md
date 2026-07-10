@@ -25,4 +25,4 @@ Troves of procurement data: If you build/service a FOSS alternative to, say MATL
 
 Our arguments and the data get stronger when you help us build/add existing FOSS alternatives you provide, to tools we are documenting! If you provide support, deployment or training services for any relevant FOSS tools, we want institutions to be able to find you!
 
-{{ btn(label="Talk to us", href="mailto:foundation@fossunited.org", variant="surface", icon="") }}
+{{ btn(label="Talk to us", href="mailto:social@fossunited.org", variant="surface", icon="") }}

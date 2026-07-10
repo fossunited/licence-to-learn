@@ -1,16 +1,13 @@
 {% extends "base.html" %}
+{% import "macros/ui.html" as ui %}
 
 {% block breadcrumb %}
-<nav class="breadcrumb wrap" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{ get_url(path='/') | safe }}">licence to Learn</a></li>
-    {% if page.components | length > 1 %}
-      {% set sec = page.components | first %}
-      <li><a href="{{ get_url(path='/' ~ sec ~ '/') | safe }}">{{ sec | replace(from='-', to=' ') | title }}</a></li>
-    {% endif %}
-    <li><span aria-current="page">{{ page.title }}</span></li>
-  </ol>
-</nav>
+{% if page.components | length > 1 %}
+  {% set sec = page.components | first %}
+  {{ ui::breadcrumb(current=page.title, mid_label=sec | replace(from='-', to=' ') | title, mid_href=get_url(path='/' ~ sec ~ '/')) }}
+{% else %}
+  {{ ui::breadcrumb(current=page.title) }}
+{% endif %}
 {% endblock %}
 
 {% block content %}

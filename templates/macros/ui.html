@@ -15,6 +15,8 @@
   <path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>
 {%- elif name == "x" -%}
   <path d="M18 6l-12 12"/><path d="M6 6l12 12"/>
+{%- elif name == "download" -%}
+  <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/>
 {%- endif -%}
 </svg>
 {% endmacro icon %}
@@ -47,6 +49,16 @@
   </div>
 </details>
 {% endmacro take_action %}
+
+{% macro breadcrumb(current, mid_label="", mid_href="") %}
+<nav class="breadcrumb wrap" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ get_url(path='/') | safe }}">Licence to Learn</a></li>
+    {% if mid_label %}<li><a href="{{ mid_href | safe }}">{{ mid_label }}</a></li>{% endif %}
+    <li><span aria-current="page">{{ current }}</span></li>
+  </ol>
+</nav>
+{% endmacro breadcrumb %}
 
 {# Reason block: square art (optional image) + heading + body paragraphs #}
 {% macro reason(title, body, art="") %}

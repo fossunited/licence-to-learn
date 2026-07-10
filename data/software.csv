@@ -4,8 +4,8 @@ Zoom Workspace Pro,"NIT Delhi, NIT Pondicherry",Productivity & Collaboration,Adm
 Office Suit Microsoft Office 365,"NIT Delhi, Nit Agartala, NIT Durgapur, NIT Pondicherry, NIT Rourkela, NIT Raipur",Productivity & Collaboration,Administrative Tool
 Web Ex (CISCO A-FLEX-3_ProPack),"NIT Delhi, NIT Pondicherry",Productivity & Collaboration,Administrative Tool
 Seqrite Antivirus Premium ,NIT Delhi,Cybersecurity,Administrative Tool
-Matlab,"NIT Delhi, NIT Durgapur, NIT GOA, NIT Pondicherry, NIT MG, NIT Srinagar, NIT Trichy, NIT Rourkela",Scientific & Engineering Software,Academic Tool
-Turnitin,"NIT Delhi, NIT Pondicherry, Nit Agartala, NIT MG, NIT Srinagar, NIT Rourkela",Academic Integrity & Writing,Academic Tool
+Matlab,"NIT Delhi, NIT Durgapur, NIT Goa, NIT Pondicherry, NIT Meghalaya, NIT Srinagar, NIT Trichy, NIT Rourkela",Scientific & Engineering Software,Academic Tool
+Turnitin,"NIT Delhi, NIT Pondicherry, Nit Agartala, NIT Meghalaya, NIT Srinagar, NIT Rourkela",Academic Integrity & Writing,Academic Tool
 Fortinet Firewall 601F,NIT Delhi,Cybersecurity,Administrative Tool
 Firewall Authenticator,NIT Delhi,Cybersecurity,Administrative Tool
 MS Teams,NIT Delhi,Productivity & Collaboration,Administrative Tool
@@ -14,7 +14,7 @@ Wordsworth Lab ,NIT Delhi,Academic Integrity & Writing,Academic Tool
 Microsoft Windows Server ,"NIT Delhi, NIT Durgapur",IT Infrastructure & OS,Administrative Tool
 eOffice,NIT Delhi,ERP & Administration,Administrative Tool
 Samarth ,NIT Delhi,ERP & Administration,Administrative Tool
-ERP ,"NIT Delhi, NIT MG",ERP & Administration,Administrative Tool
+ERP ,"NIT Delhi, NIT Meghalaya",ERP & Administration,Administrative Tool
 Soild Works Educational Edition Software,"Nit Agartala, NIT Trichy",CAD / CAM / Design,Academic Tool
 BK Connect FFT Software ,Nit Agartala,Scientific & Engineering Software,Academic Tool
 Time Data Recorder Software,Nit Agartala,Scientific & Engineering Software,Academic Tool
@@ -22,10 +22,10 @@ IBM SPSS Statistics BASE Version 29.0,Nit Agartala,Data Analysis & Statistics,Ac
 ANSYS Mechanical bundle ,"Nit Agartala, NIT Srinagar, NIT Trichy",Simulation & Modelling,Academic Tool
 ANSYS CFD bundle ,"Nit Agartala, NIT Srinagar, NIT Trichy",Simulation & Modelling,Academic Tool
 ANSYS HFSS ,"Nit Agartala, NIT Srinagar, NIT Trichy",Simulation & Modelling,Academic Tool
-ANSYS Maxwell ,"Nit Agartala, NIT GOA, NIT Trichy",Simulation & Modelling,Academic Tool
+ANSYS Maxwell ,"Nit Agartala, NIT Goa, NIT Trichy",Simulation & Modelling,Academic Tool
 ANSYS Lumerical ,Nit Agartala,Simulation & Modelling,Academic Tool
 ANSYS Zemax,Nit Agartala,Simulation & Modelling,Academic Tool
-ANSYS,"Nit Agartala, NIT Durgapur, NIT GOA, NIT Pondicherry, NIT MG, NIT Trichy",Simulation & Modelling,Academic Tool
+ANSYS,"Nit Agartala, NIT Durgapur, NIT Goa, NIT Pondicherry, NIT Meghalaya, NIT Trichy",Simulation & Modelling,Academic Tool
 CHEMCAD Software,Nit Agartala,Scientific & Engineering Software,Academic Tool
 ABAQUS Academic Research,Nit Agartala,Simulation & Modelling,Academic Tool
 Hyper LINGO 20 ,Nit Agartala,Data Analysis & Statistics,Academic Tool
@@ -33,22 +33,22 @@ COMSOL,"NIT Durgapur, NIT Trichy",Simulation & Modelling,Academic Tool
 SPSS,"NIT Durgapur, NIT Trichy",Data Analysis & Statistics,Academic Tool
 SSL,NIT Durgapur,Cybersecurity,Administrative Tool
 LUSAS,NIT Durgapur,Simulation & Modelling,Academic Tool
-Cadence EDA tool,NIT GOA,Electronic Design Automation (EDA),Academic Tool
-Synopsys Sentaurus TCAD,NIT GOA,Electronic Design Automation (EDA),Academic Tool
-Visual TCAD,NIT GOA,Electronic Design Automation (EDA),Academic Tool
-AMD Vidado Design Suite Software,NIT GOA,Electronic Design Automation (EDA),Academic Tool
-ANSYS,"NIT GOA, NIT Trichy, NIT Rourkela",Simulation & Modelling,Academic Tool
-CST studio suite,NIT GOA,Simulation & Modelling,Academic Tool
-RT-Lab software ,NIT GOA,Simulation & Modelling,Academic Tool
-PSIM,NIT GOA,Scientific & Engineering Software,Academic Tool
-MI Power,NIT GOA,Academic Integrity & Writing,Academic Tool
-Quill Bot,NIT GOA,Simulation & Modelling,Academic Tool
-Midas Gen ,NIT GOA,Simulation & Modelling,Academic Tool
-Midas GTS Nx,NIT GOA,Simulation & Modelling,Academic Tool
-Plaxis 2D,NIT GOA,GIS & Remote Sensing,Academic Tool
-Arc GIS,NIT GOA,CAD / CAM / Design,Academic Tool
-AutoCAD,"NIT GOA, NIT Trichy",CAD / CAM / Design,Academic Tool
-MasterCAM,NIT GOA,ERP & Administration,Administrative Tool
+Cadence EDA tool,NIT Goa,Electronic Design Automation (EDA),Academic Tool
+Synopsys Sentaurus TCAD,NIT Goa,Electronic Design Automation (EDA),Academic Tool
+Visual TCAD,NIT Goa,Electronic Design Automation (EDA),Academic Tool
+AMD Vidado Design Suite Software,NIT Goa,Electronic Design Automation (EDA),Academic Tool
+ANSYS,"NIT Goa, NIT Trichy, NIT Rourkela",Simulation & Modelling,Academic Tool
+CST studio suite,NIT Goa,Simulation & Modelling,Academic Tool
+RT-Lab software ,NIT Goa,Simulation & Modelling,Academic Tool
+PSIM,NIT Goa,Scientific & Engineering Software,Academic Tool
+MI Power,NIT Goa,Academic Integrity & Writing,Academic Tool
+Quill Bot,NIT Goa,Simulation & Modelling,Academic Tool
+Midas Gen ,NIT Goa,Simulation & Modelling,Academic Tool
+Midas GTS Nx,NIT Goa,Simulation & Modelling,Academic Tool
+Plaxis 2D,NIT Goa,GIS & Remote Sensing,Academic Tool
+Arc GIS,NIT Goa,CAD / CAM / Design,Academic Tool
+AutoCAD,"NIT Goa, NIT Trichy",CAD / CAM / Design,Academic Tool
+MasterCAM,NIT Goa,ERP & Administration,Administrative Tool
 Superset - Tnpsuite,NIT Kurukshetra,Simulation & Modelling,Academic Tool
 Ventclim Fluidyn Software,NIT Kurukshetra,Cybersecurity,Administrative Tool
 K7 Security Enterprises ,NIT Kurukshetra,Simulation & Modelling,Academic Tool
@@ -72,7 +72,7 @@ IEEE IEL Online Tier 2,NIT Pondicherry,Electronic Design Automation (EDA),Academ
 proteus VSM for MSP430,NIT Pondicherry,Simulation & Modelling,Academic Tool
 Comsol Multiphysics software package,"NIT Pondicherry, NIT Trichy",Simulation & Modelling,Academic Tool
 FLOW 3D Hydro software,NIT Pondicherry,Simulation & Modelling,Academic Tool
-Midas Software,"NIT Pondicherry, NIT MG, NIT Kurukshetra, NIT Sikkim",Simulation & Modelling,Academic Tool
+Midas Software,"NIT Pondicherry, NIT Meghalaya, NIT Kurukshetra, NIT Sikkim",Simulation & Modelling,Academic Tool
 "Geostudio software,",NIT Pondicherry,Simulation & Modelling,Academic Tool
 PSIM2021a-Education -professional-network,NIT Pondicherry,Scientific & Engineering Software,Academic Tool
 Mi power software package,NIT Pondicherry,Academic Integrity & Writing,Academic Tool
@@ -80,7 +80,7 @@ English laboratory software sanako study,NIT Pondicherry,Cybersecurity,Administr
 email security appliance and its accessories ,NIT Pondicherry,GIS & Remote Sensing,Academic Tool
 ArcGIS Software,NIT Pondicherry,Simulation & Modelling,Academic Tool
 LS-RAPID software,NIT Pondicherry,Academic Integrity & Writing,Academic Tool
-Grammarly,"NIT Pondicherry, NIT MG, NIT Srinagar, NIT Rourkela",Scientific & Engineering Software,Academic Tool
+Grammarly,"NIT Pondicherry, NIT Meghalaya, NIT Srinagar, NIT Rourkela",Scientific & Engineering Software,Academic Tool
 Ergo Master,NIT Pondicherry,IT Infrastructure & OS,Administrative Tool
 AI server,NIT Pondicherry,Scientific & Engineering Software,Academic Tool
 "Anthropometer and Ergo Fello software,",NIT Pondicherry,Simulation & Modelling,Academic Tool
@@ -111,23 +111,23 @@ BeamPROP BPM add-on,NIT Pondicherry,IT Infrastructure & OS,Administrative Tool
 Academic Teaching Network License OptSIM,NIT Pondicherry,Electronic Design Automation (EDA),Academic Tool
 Proteus VSM Embedded Design & Simulation software,NIT Pondicherry,Electronic Design Automation (EDA),Academic Tool
 Proteus VSM for MSP430,NIT Pondicherry,Cybersecurity,Administrative Tool
-Kaspersky Anti-Virus,NIT MG,Library & Research Management,Administrative Tool
-LSAcademia,NIT MG,Electronic Design Automation (EDA),Academic Tool
-MEMS Design,NIT MG,Electronic Design Automation (EDA),Academic Tool
-MEMS Design and ANALYSIS Software,NIT MG,Simulation & Modelling,Academic Tool
-MIKE21C,NIT MG,Scientific & Engineering Software,Academic Tool
-Gaussian 09 and Gauss View 5,NIT MG,CAD / CAM / Design,Academic Tool
-MasterCam X9 Edu,NIT MG,Data Analysis & Statistics,Academic Tool
-Teeplot Academic Suite ,NIT MG,Simulation & Modelling,Academic Tool
-PSS@SINCAL ,NIT MG,ERP & Administration,Administrative Tool
-Tally Net Gold,NIT MG,Cybersecurity,Administrative Tool
-Cyberoam,NIT MG,IT Infrastructure & OS,Administrative Tool
-Microsoft Cloud,NIT MG,Scientific & Engineering Software,Academic Tool
-Materialise Magics Additive Manufacturing Education Program,NIT MG,Scientific & Engineering Software,Academic Tool
-Materialise Mimics Medical Image Processing Software,NIT MG,Scientific & Engineering Software,Academic Tool
-Materialise 3-matic,NIT MG,Simulation & Modelling,Academic Tool
-ANSYS Granta edu PAck ,"NIT MG, NIT Srinagar",Simulation & Modelling,Academic Tool
-ANSYS Learning Hub ,"NIT MG, NIT Srinagar",IT Infrastructure & OS,Administrative Tool
+Kaspersky Anti-Virus,NIT Meghalaya,Library & Research Management,Administrative Tool
+LSAcademia,NIT Meghalaya,Electronic Design Automation (EDA),Academic Tool
+MEMS Design,NIT Meghalaya,Electronic Design Automation (EDA),Academic Tool
+MEMS Design and ANALYSIS Software,NIT Meghalaya,Simulation & Modelling,Academic Tool
+MIKE21C,NIT Meghalaya,Scientific & Engineering Software,Academic Tool
+Gaussian 09 and Gauss View 5,NIT Meghalaya,CAD / CAM / Design,Academic Tool
+MasterCam X9 Edu,NIT Meghalaya,Data Analysis & Statistics,Academic Tool
+Teeplot Academic Suite ,NIT Meghalaya,Simulation & Modelling,Academic Tool
+PSS@SINCAL ,NIT Meghalaya,ERP & Administration,Administrative Tool
+Tally Net Gold,NIT Meghalaya,Cybersecurity,Administrative Tool
+Cyberoam,NIT Meghalaya,IT Infrastructure & OS,Administrative Tool
+Microsoft Cloud,NIT Meghalaya,Scientific & Engineering Software,Academic Tool
+Materialise Magics Additive Manufacturing Education Program,NIT Meghalaya,Scientific & Engineering Software,Academic Tool
+Materialise Mimics Medical Image Processing Software,NIT Meghalaya,Scientific & Engineering Software,Academic Tool
+Materialise 3-matic,NIT Meghalaya,Simulation & Modelling,Academic Tool
+ANSYS Granta edu PAck ,"NIT Meghalaya, NIT Srinagar",Simulation & Modelling,Academic Tool
+ANSYS Learning Hub ,"NIT Meghalaya, NIT Srinagar",IT Infrastructure & OS,Administrative Tool
 "Windows Server 2022 Standard-i6 core license pack-Educational Software
 ","NIT Durgapur, NIT Srinagar",Data Analysis & Statistics,Academic Tool
 Smart PLS Software,NIT Srinagar,Scientific & Engineering Software,Academic Tool
@@ -144,8 +144,8 @@ Altair standard bundle,NIT Srinagar,Simulation & Modelling,Academic Tool
 comsol battery design module,NIT Srinagar,Simulation & Modelling,Academic Tool
 ANSYS EM,"NIT Srinagar, NIT Trichy",Simulation & Modelling,Academic Tool
 ANSYS Training,NIT Srinagar,Simulation & Modelling,Academic Tool
-Converge CFD Software,NIT MG,Scientific & Engineering Software,Academic Tool
-AMS Suite Software,,Simulation & Modelling,Academic Tool
+Converge CFD Software,NIT Meghalaya,Scientific & Engineering Software,Academic Tool
+AMS Suite Software,NIT Kurukshetra,Simulation & Modelling,Academic Tool
 DigSilent power factory Software,NIT Kurukshetra,Scientific & Engineering Software,Academic Tool
 sound plan noise professional package software,NIT Srinagar,Simulation & Modelling,Academic Tool
 FLAC 3D ,NIT Srinagar,IT Infrastructure & OS,Administrative Tool

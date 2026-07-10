@@ -12,7 +12,7 @@ RTIs only take us so far, with most institutions either not providing the full p
 
 You know what software your coursework depends on, we need that data!
 
-{{ btn(label="Join the audit", href="mailto:foundation@fossunited.org?subject=Course%20audit") }}
+{{ btn(label="Join the audit", href="https://fossunited.org/course-audit/new") }}
 
 ## Try your hand at RTIs
 
@@ -20,6 +20,4 @@ Did we miss filing a Right to Information request with your institute, are you i
 
 Here's the template request you can use to perform this fun side-quest exercising your Right to Information and helping us improve our datasets!
 
-Take home the template.
-
-{{ btn(label="View full tutorial", href="https://docs.google.com/document/d/11nm_QN3a7fPKbZkAynjRRnbI_eoz71H7UkL4PsDg37Q/edit") }}
+{{ btn(label="Take home the template", href="https://files.fossunited.org/RTIs/community-rti-form.pdf") }}
