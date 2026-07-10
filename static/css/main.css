@@ -277,7 +277,6 @@ main {
    Breadcrumb
    ========================================================================== */
 .breadcrumb {
-  padding-block: clamp(1.5rem, 1rem + 2vw, 2.5rem) 0;
   font-size: var(--fs-sm);
   color: var(--body);
 
@@ -778,9 +777,33 @@ main {
 .status--appeal {
   color: var(--info);
 }
+.rating--a {
+  color: var(--ok);
+}
+.rating--b {
+  color: var(--warn);
+}
+.rating--c {
+  color: var(--bad);
+}
+.col--link a {
+  display: inline-flex;
+  color: var(--accent);
+
+  & + a {
+    margin-inline-start: 0.5rem;
+  }
+  & .icon {
+    inline-size: 18px;
+    block-size: 18px;
+  }
+  &:hover {
+    color: var(--btn);
+  }
+}
 
 /* ==========================================================================
-   Live spend counter (odometer)
+   Total spend (static)
    ========================================================================== */
 .counter {
   position: relative;
@@ -806,33 +829,10 @@ main {
   font-weight: 400;
   color: var(--body);
 }
-.odo {
-  display: inline-flex;
-}
-.odo-digit {
-  display: inline-block;
-  block-size: 1em;
-  overflow: hidden;
-}
-.odo-stack {
-  display: flex;
-  flex-direction: column;
-  transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-
-  & > span {
-    block-size: 1em;
-    text-align: center;
-  }
-}
 .counter__note {
   margin-block-start: 0.5rem;
   color: var(--body);
   font-size: var(--fs-sm);
-}
-@media (prefers-reduced-motion: reduce) {
-  .odo-stack {
-    transition: none;
-  }
 }
 .info-tip {
   position: relative;
@@ -877,13 +877,6 @@ main {
   font-size: var(--fs-sm);
   font-weight: 400;
   box-shadow: 0 8px 24px oklch(0% 0 0 / 0.35);
-
-  & .info-tip__actual {
-    display: block;
-    margin-block-start: 0.5rem;
-    color: var(--heading);
-    font-weight: 600;
-  }
 }
 .counter__info {
   align-self: center;
@@ -1071,6 +1064,15 @@ main {
     r: 7;
     filter: drop-shadow(0 0 6px oklch(from var(--accent) l c h / 0.6));
   }
+  /* 0 = not provided/collected, not an actual ₹0 - hollow, not filled. */
+  &.is-empty {
+    fill: none;
+    stroke: var(--body);
+
+    &.is-active {
+      filter: none;
+    }
+  }
 }
 .linechart.is-reduced .linechart__node {
   transition: none;
@@ -1088,84 +1090,6 @@ main {
   font-size: 0.875rem;
   white-space: nowrap;
   pointer-events: none;
-}
-
-/* ==========================================================================
-   Combined all-institutes line chart
-   ========================================================================== */
-.multichart-fig {
-  margin-block: 1.5rem 0;
-}
-.multichart {
-  position: relative;
-}
-.multichart__svg {
-  inline-size: 100%;
-  block-size: auto;
-  aspect-ratio: 520 / 260;
-  overflow: visible;
-}
-.ml-line {
-  opacity: 0.55;
-  transition: opacity 0.15s;
-
-  &.is-dim {
-    opacity: 0.08;
-  }
-  &.is-on {
-    opacity: 1;
-    stroke-width: 2.5;
-  }
-}
-.ml-node {
-  fill: var(--accent);
-  stroke: var(--bg);
-  stroke-width: 1;
-  opacity: 0;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 1;
-    r: 5;
-  }
-}
-.multichart__tip {
-  position: absolute;
-  z-index: 2;
-  translate: 8px 6px;
-  padding: 8px 12px;
-  border-radius: 0 20px 20px 20px;
-  background: #181615;
-  color: var(--accent);
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  pointer-events: none;
-}
-.multichart__legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-block-start: 0.75rem;
-}
-.ml-chip {
-  padding: 0.15rem 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--surface);
-  color: var(--body);
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-variant-numeric: tabular-nums;
-  cursor: pointer;
-
-  &:hover,
-  &:focus-visible,
-  &.is-on {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
 }
 
 /* ==========================================================================

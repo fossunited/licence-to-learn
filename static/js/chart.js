@@ -39,31 +39,6 @@
   // n+1 evenly spaced tick values from lo to hi (for Y-axis gridlines/labels).
   const ticks = (lo, hi, n) => Array.from({ length: n + 1 }, (_, i) => lo + ((hi - lo) * i) / n);
 
-  // Abbreviate institute names: uppercase initials where unique; collided
-  // groups extended equally with lowercase letters of the last word until
-  // unique. Deterministic, independent of input order.
-  const abbrevMap = (names) => {
-    const init = names.map((s) => (s.match(/[A-Z]/g) || []).join(""));
-    const tail = names.map((s) => s.trim().split(/\s+/).pop().slice(1));
-    const groups = {};
-    names.forEach((_, i) => (groups[init[i]] ||= []).push(i));
-    const out = [];
-    for (const key in groups) {
-      const idxs = groups[key];
-      if (idxs.length === 1) { out[idxs[0]] = key; continue; }
-      let k = 1;
-      for (;;) {
-        const cand = idxs.map((i) => key + tail[i].slice(0, k));
-        if (new Set(cand).size === cand.length || k > 20) {
-          idxs.forEach((i, j) => (out[i] = cand[j]));
-          break;
-        }
-        k++;
-      }
-    }
-    return out;
-  };
-
   const draw = (box, domainMax) => {
     const values = (box.dataset.values || "").split(",").map(num);
     const labels = (box.dataset.labels || "").split(",");
@@ -111,7 +86,8 @@
 
     // nodes
     values.forEach((v, i) => {
-      const node = el("circle", { cx: x(i).toFixed(1), cy: y(v).toFixed(1), r: "4", class: "linechart__node", tabindex: "0", role: "button" });
+      const cls = v > 0 ? "linechart__node" : "linechart__node is-empty";
+      const node = el("circle", { cx: x(i).toFixed(1), cy: y(v).toFixed(1), r: "4", class: cls, tabindex: "0", role: "button" });
       const label = `${labels[i] ? labels[i] + ": " : ""}${valLabel(v)}`;
       node.setAttribute("aria-label", label);
       const show = () => {
@@ -136,97 +112,8 @@
     box.append(svg, tip);
   };
 
-  // Combined chart: every institute on one 0-max domain, interactive legend.
-  const drawMulti = (box) => {
-    const series = [...box.querySelectorAll("[data-name][data-values]")].map((s) => ({
-      name: s.dataset.name,
-      values: (s.dataset.values || "").split(",").map(num),
-    }));
-    const labels = (box.dataset.labels || "").split(",");
-    if (series.length < 1) return;
-    const abbrevs = abbrevMap(series.map((s) => s.name));
-
-    const W = 520, H = 260, padL = 48, padR = 14, padT = 16, padB = 30;
-    const max = Math.max(...series.flatMap((s) => s.values), 0);
-    const range = max || 1;
-    const stepX = (W - padL - padR) / (labels.length - 1);
-    const x = (i) => padL + i * stepX;
-    const y = (v) => padT + (1 - v / range) * (H - padT - padB);
-
-    const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, class: "multichart__svg", role: "img" });
-    svg.setAttribute("aria-label", box.getAttribute("aria-label") || "spending by year");
-
-    ticks(0, max, 4).forEach((v) => {
-      const yy = y(v);
-      svg.append(el("line", { x1: padL, y1: yy.toFixed(1), x2: W - padR, y2: yy.toFixed(1), class: "lc-grid" }));
-      svg.append(el("text", { x: padL - 6, y: (yy + 3).toFixed(1), class: "lc-ylabel", "text-anchor": "end" }, axisShort(v)));
-    });
-    labels.forEach((lab, i) => {
-      svg.append(el("text", { x: x(i).toFixed(1), y: H - padB + 14, class: "lc-xlabel", "text-anchor": "middle" }, lab));
-    });
-
-    const paths = series.map((s, si) => {
-      const d = s.values.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
-      const p = el("path", { d, fill: "none", stroke: "var(--accent)", "stroke-width": "1.5", class: "ml-line" });
-      p.dataset.i = si;
-      svg.append(p);
-      return p;
-    });
-
-    const isolate = (si) => paths.forEach((p, i) => p.classList.toggle("is-dim", si != null && i !== si));
-
-    // Hover tooltip: a node per point shows institute, year and amount, and
-    // isolates that institute's line. Keyboard users isolate via the chips.
-    const tip = document.createElement("div");
-    tip.className = "multichart__tip";
-    tip.hidden = true;
-    series.forEach((s, si) => {
-      s.values.forEach((v, i) => {
-        const node = el("circle", { cx: x(i).toFixed(1), cy: y(v).toFixed(1), r: "3", class: "ml-node" });
-        const label = `${s.name} · ${labels[i]}: ${valLabel(v)}`;
-        node.setAttribute("aria-label", label);
-        node.addEventListener("pointerenter", () => {
-          tip.textContent = label;
-          tip.hidden = false;
-          tip.style.insetInlineStart = `${(x(i) / W) * 100}%`;
-          tip.style.insetBlockStart = `${(y(v) / H) * 100}%`;
-          isolate(si);
-          paths[si].classList.add("is-on");
-        });
-        node.addEventListener("pointerleave", () => {
-          tip.hidden = true;
-          isolate(null);
-          paths[si].classList.remove("is-on");
-        });
-        svg.append(node);
-      });
-    });
-
-    const legend = document.createElement("div");
-    legend.className = "multichart__legend";
-    series.forEach((s, si) => {
-      const chip = document.createElement("button");
-      chip.type = "button";
-      chip.className = "ml-chip";
-      chip.textContent = abbrevs[si];
-      chip.title = s.name;
-      chip.setAttribute("aria-label", s.name);
-      const on = () => { isolate(si); chip.classList.add("is-on"); paths[si].classList.add("is-on"); };
-      const off = () => { isolate(null); chip.classList.remove("is-on"); paths[si].classList.remove("is-on"); };
-      chip.addEventListener("pointerenter", on);
-      chip.addEventListener("pointerleave", off);
-      chip.addEventListener("focus", on);
-      chip.addEventListener("blur", off);
-      legend.append(chip);
-    });
-
-    box.textContent = "";
-    box.append(svg, tip, legend);
-  };
-
   // Each card scales to its own max, like a normal standalone chart.
   document.querySelectorAll(".linechart").forEach((box) => draw(box, null));
-  document.querySelectorAll(".multichart").forEach(drawMulti);
 
   // Format any [data-inr] element as Indian-grouped rupees (card totals).
   document.querySelectorAll("[data-inr]").forEach((n) => {
