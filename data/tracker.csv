@@ -2,7 +2,7 @@ type,institute,city,status,category,response
 NIT,NIT Delhi,Delhi,Responded,A,response_NITDL_R_E_25_00115
 NIT,NIT Durgapur,Durgapur,Responded,A,"response_NITDP_R_E_25_00083, response_NITDP_R_E_25_00083-2"
 NIT,NIT Meghalaya,Shillong,Responded,A,response_NITMG_R_E_25_00030
-NIT,NIT Puducherry,Puducherry,Responded,A, response_NITPD_R_E_25_00050
+NIT,NIT Pondicherry,Pondicherry,Responded,A, response_NITPD_R_E_25_00050
 NIT,NIT Kurukshetra,Kurukshetra,Responded,A,response_NITKS_R_E_25_00146 
 NIT,NIT Srinagar,Srinagar,Responded,A,response_NITSN_R_E_25_00143
 NIT,NIT Rourkela,Rourkela,Responded,A,response_NITRK_R_E_25_00108

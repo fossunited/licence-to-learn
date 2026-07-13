@@ -18,9 +18,6 @@ We are mapping the software dependencies of universities across India. What tool
 
 Troves of procurement data: If you build/service a FOSS alternative to, say MATLAB or ANSYS or any Office products, we have data on how universities across the country are procuring these tools and how much!
 
-\<in the future, post conversations with institutions and students\>
-13 reasons why unis don't switch
-
 ## Help us build a credible list of alternatives and vendors who can provide them.
 
 Our arguments and the data get stronger when you help us build/add existing FOSS alternatives you provide, to tools we are documenting! If you provide support, deployment or training services for any relevant FOSS tools, we want institutions to be able to find you!
