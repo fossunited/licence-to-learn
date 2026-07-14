@@ -5,7 +5,7 @@
 
 {% block content %}
 <section class="wrap page notfound">
-  <img src="{{ get_url(path='img/hero-books.webp') | safe }}" alt="" width="200" height="236" loading="lazy" decoding="async" />
+  <img src="{{ get_url(path='img/hero-books.webp') | safe }}" alt="Books padlocked" width="200" height="236" loading="lazy" decoding="async" />
   <h1>404 :: locked out</h1>
   <p class="hero__lede">This page doesn't exist, moved, or is still waiting on an RTI reply.</p>
   {{ ui::button(label="Back to home", href=get_url(path='/'), variant="primary") }}
