@@ -51,7 +51,7 @@
     const names = (c.dataset.names || "").split(",");
     if (!totals.length || !c.dataset.totals) return;
 
-    const sorted = [...totals].sort((a, b) => a - b);
+    const sorted = [...totals].filter(v => v > 0).sort((a, b) => a - b);
     const n = sorted.length;
     const sum = sorted.reduce((a, b) => a + b, 0);
     const mean = sum / n;
@@ -85,11 +85,11 @@
     const tools = num(btn.dataset.tools);
 
     const n = vals.length;
-    const mean = vals.reduce((a, b) => a + b, 0) / n;
+    const reported = vals.filter(v => v > 0).length;
+    const mean = reported > 0 ? vals.reduce((a, b) => a + b, 0) / reported : 0;
     const maxV = Math.max(...vals), minV = Math.min(...vals);
     const maxYr = YEARS[vals.indexOf(maxV)] || "";
     const minYr = YEARS[vals.indexOf(minV)] || "";
-    const reported = vals.filter((v) => v > 0).length;
 
     pop.innerHTML = `<dl>
       ${row("5-year total", withShort(total))}
