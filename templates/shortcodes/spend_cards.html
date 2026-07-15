@@ -5,6 +5,7 @@
 {% set sw = load_data(path="data/software.csv") %}
 <div class="card-grid spend-cards">
   {% for row in data.records %}
+    {% if row[6] != "0" %}
     {% set inst = row[0] %}
     {% set vals = row[1] ~ "," ~ row[2] ~ "," ~ row[3] ~ "," ~ row[4] ~ "," ~ row[5] %}
     {% set_global tools = 0 %}
@@ -28,5 +29,6 @@
         5-year total ₹{{ row[6] }}
       </div>
     </article>
+    {% endif %}
   {% endfor %}
 </div>
