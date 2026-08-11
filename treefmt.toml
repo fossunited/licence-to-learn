@@ -4,7 +4,15 @@ command = "prettier"
 options = ["--write"]
 # NB: no *.html - Zola template uses Tera ({% %}); prettier would mangle them.
 includes = ["*.css", "*.md", "*.json", "*.yaml", "*.yml"]
-excludes = ["public/**", "notes/**", "data/*.csv"]
+# rti-index.json is a generated, minified artefact — pretty-printing it would
+# multiply its download size. static/js/vendor/** is unmodified upstream code.
+excludes = [
+  "public/**",
+  "notes/**",
+  "data/*.csv",
+  "static/rti-index.json",
+  "static/js/vendor/**",
+]
 
 [formatter.taplo]
 command = "taplo"

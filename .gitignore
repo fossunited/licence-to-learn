@@ -3,6 +3,11 @@
 tmp.html
 /tmp
 
+# Downloaded RTI PDFs + their extracted text, rebuilt by `just index`.
+# The shipped artefact is static/rti-index.json, which IS committed.
+/.cache
+__pycache__/
+
 # qsv validate failure artifacts
 data/*.csv.invalid
 data/*.csv.valid

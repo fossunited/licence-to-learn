@@ -1,0 +1,50 @@
+name: Update search index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/tracker.csv"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install system deps
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-eng tesseract-ocr-hin curl
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: rti-cache-${{ hashFiles('data/tracker.csv') }}-v1
+          restore-keys: |
+            rti-cache-${{ hashFiles('data/tracker.csv') }}-
+            rti-cache-
+
+      - name: Build search index
+        run: python3 scripts/build-index.py -j 2
+
+      - name: Push updated index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/rti-index.json
+          if git diff --cached --quiet; then
+            echo "Index unchanged, nothing to commit."
+          else
+            git commit -m "chore: refresh rti-index.json"
+            git push
+          fi

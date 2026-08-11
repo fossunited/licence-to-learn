@@ -1,5 +1,16 @@
 [files]
-extend-exclude = ["public/", "notes/", "data/", "*.csv"]
+# rti-index.json is OCR output — it is *full* of real misreadings ("Ronds &
+# Bridges") that are faithful to the scan and must not be "corrected".
+# static/js/vendor/ is unmodified upstream code.
+extend-exclude = [
+  "public/",
+  "notes/",
+  "data/",
+  "*.csv",
+  ".cache/",
+  "static/rti-index.json",
+  "static/js/vendor/",
+]
 
 [default.extend-words]
 # Domain terms that aren't typos

@@ -20,13 +20,18 @@ import-case file name:
     pandoc "{{ file }}" -t gfm --wrap=none -o "content/cases/{{ name }}.md"
     @echo "wrote content/cases/{{ name }}.md — add front matter (title/date/description)"
 
-# Validate every CSV against its JSON Schema
+# Rebuild the RTI full-text search index (downloads + OCRs; run when RTIs change)
+index:
+    python3 scripts/build-index.py
+
+# Validate every CSV against its JSON Schema, then the search index
 check-data:
     for f in data/*.csv; do \
       s="${f%.csv}.schema.json"; \
       echo "validate $f"; \
       qsv validate "$f" "$s"; \
     done
+    python3 scripts/build-index.py --check
 
 # Lint code/content
 lint:

@@ -12,6 +12,11 @@ pkgs.mkShell {
     just
     # data: validate CSV against JSON Schema  +  pull sheets / convert docs
     qsv pandoc curl
+    # search index: pdftotext/pdfinfo/pdftoppm + OCR for the scanned RTI replies
+    # (~40% of them have no text layer). Driven by scripts/build-index.py.
+    python3
+    poppler_utils
+    (tesseract.override { enableLanguages = [ "eng" "hin" ]; })
     # linters / formatters
     taplo # TOML
     typos # spellcheck

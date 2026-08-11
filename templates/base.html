@@ -26,6 +26,25 @@
           <span data-icon-open>{{ ui::icon(name="menu") }}</span>
           <span data-icon-close hidden>{{ ui::icon(name="x") }}</span>
         </button>
+        <div
+          class="header-search"
+          data-rti-search
+          data-index="{{ get_url(path='rti-index.json', cachebust=true) | safe }}"
+          data-worker="{{ get_url(path='js/search.worker.js', cachebust=true) | safe }}"
+          data-search-url="{{ get_url(path='search/') | safe }}"
+        >
+          <form class="header-search__form" role="search">
+            <svg class="header-search__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" width="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input
+              class="header-search__input"
+              type="search"
+              placeholder="Search..."
+              autocomplete="off"
+              enterkeyhint="search"
+            />
+          </form>
+          <div class="header-search__drop" hidden></div>
+        </div>
         <nav class="nav" id="primary-nav" aria-label="Primary">
           <a href="{{ get_url(path='/data/') | safe }}">Data so far</a>
           <a href="{{ get_url(path='/tracker/') | safe }}">RTI Tracker</a>
@@ -68,6 +87,7 @@
     </footer>
 
     <script src="{{ get_url(path='js/nav.js', cachebust=true) | safe }}" defer></script>
+    <script src="{{ get_url(path='js/search.js', cachebust=true) | safe }}" defer></script>
     {% block scripts %}{% endblock %}
   </body>
 </html>
