@@ -18,7 +18,7 @@ This project was possible thanks to friends in the FOSS United community whose b
 - **RTI advice**: [Gyan Tripathi](https://gyantripathi.com/), [Anuj Nakade](https://www.livelaw.in/anuj-nakade)
 - **Design**: [Jeswin Josu](https://jeswinjosu.com/)
 - **Tech**: [Dilip G](https://idlip.in) & [Other Contributors](https://github.com/fossunited/licence-to-learn/graphs/contributors)
-- **Research**: [Ananya Arora](https://github.com/ananya-arora-22/), [Sadhana Thirumangai Kalidoss](https://sthirkal.github.io/), [Ashlesh Biradar](https://x.com/ashleshbiradar)
+- **Research**: [Ananya Arora](https://billi.today), [Sadhana Thirumangai Kalidoss](https://sthirkal.github.io/), [Ashlesh Biradar](https://x.com/ashleshbiradar)
 
 ## Licence
 
