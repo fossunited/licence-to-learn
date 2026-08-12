@@ -1609,7 +1609,15 @@ main {
 }
 .linechart__mini-svg {
   inline-size: 100%;
-  block-size: 4.5rem;
+  /* 100%, not a fixed 4.5rem: .spend-card__body stretches this box to match
+     its sibling .spend-card__amount (align-items: stretch), but a fixed SVG
+     height didn't follow that stretch — so on narrow screens, where the
+     amount panel's text wraps to 2-3 lines and grows taller, the chart's
+     own box grew with it while the bars stayed pinned at 72px, leaving a
+     gap. chart.js's drawMini() measures this resolved height and matches
+     the viewBox to it, so the 4.5rem here is only a pre-JS/no-JS fallback. */
+  block-size: 100%;
+  min-block-size: 4.5rem;
   overflow: visible;
 }
 .lcm-bar {
@@ -1646,9 +1654,12 @@ main {
    Software usage cards
    ========================================================================== */
 /* Full-width rows, matching .spend-cards — head, adoption bar and caption
-   stack inside each row. */
+   stack inside each row. minmax(0, 1fr), not a bare 1fr: see .spend-cards
+   above — a bare 1fr track's automatic minimum is content-based, so a long
+   software name/category (nowrap + ellipsis) forces the track wider than the
+   grid and the card spills past the page edge instead of truncating. */
 .software-cards {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.75rem;
 }
 .software-card {
@@ -2036,14 +2047,18 @@ main {
   display: flex;
   flex: 1;
   flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: baseline;
   gap: 0.4rem;
   color: var(--heading);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+
+  & .amt {
+    text-align: right;
+  }
 }
 .institution__stat-note {
-  margin-inline-start: auto;
   color: var(--body);
   font-weight: 400;
   white-space: nowrap;

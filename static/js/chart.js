@@ -176,30 +176,49 @@
     return { fillId: `url(#${uid})`, hatchId: `url(#${hatchId})` };
   };
 
-  const wireBarTip = (box, tipClass) => {
+  // Appended to <body>, not `box` — a card ancestor (.spend-card) clips
+  // overflow to guard against unrelated layout spillage (see its comment in
+  // main.css), which was clipping this tooltip whenever a bar's popup
+  // reached above the card's own padding. Positioning from the target bar's
+  // own page coordinates instead of a percentage of `box` sidesteps that:
+  // absolute position on <body> resolves against the document, so it still
+  // scrolls with the page like before.
+  const wireBarTip = (tipClass) => {
     const tip = document.createElement("div");
     tip.className = tipClass;
     tip.hidden = true;
-    box.append(tip);
+    document.body.append(tip);
     return {
-      show(label, xPct, yPct) {
+      show(label, target) {
         tip.textContent = label;
         tip.hidden = false;
-        tip.style.insetInlineStart = `${xPct}%`;
-        tip.style.insetBlockStart = `${yPct}%`;
+        const r = target.getBoundingClientRect();
+        // Centering on the bar (translate: -50% via CSS) spills past the
+        // viewport edge for bars near either side of a narrow card — clamp
+        // the anchor so the tip's own box stays fully on-screen instead.
+        const margin = 8;
+        const half = tip.offsetWidth / 2;
+        const vw = document.documentElement.clientWidth;
+        const clientX = Math.min(Math.max(r.left + r.width / 2, half + margin), vw - half - margin);
+        tip.style.insetInlineStart = `${clientX + window.scrollX}px`;
+        tip.style.insetBlockStart = `${r.top + window.scrollY}px`;
       },
       hide() { tip.hidden = true; },
     };
   };
 
   // Compact 5-bar sparkline (institute cards). Shares the values/labels
-  // contract with the full chart above.
+  // contract with the full chart above. Its box is stretched by the parent
+  // row (align-items: stretch) to match the sibling money panel, which can
+  // grow taller than the default 72px once its text wraps on a narrow
+  // screen — H is measured from that resolved box height, not hardcoded, so
+  // the bars redraw to fill it exactly instead of leaving a gap below them.
   const drawMini = (box) => {
     const values = (box.dataset.values || "").split(",").map(num);
     const labels = (box.dataset.labels || "").split(",");
     if (!values.length) return;
 
-    const W = 140, H = 72, gap = 4, RX = 5;
+    const W = 140, H = Math.max(72, Math.round(box.getBoundingClientRect().height) || 72), gap = 4, RX = 5;
     const n = values.length;
     const barW = (W - gap * (n - 1)) / n;
     const max = Math.max(...values, 1);
@@ -210,7 +229,7 @@
 
     box.textContent = "";
     box.append(svg);
-    const tip = wireBarTip(box, "linechart__callout");
+    const tip = wireBarTip("linechart__callout");
 
     values.forEach((v, i) => {
       const bx = i * (barW + gap);
@@ -237,7 +256,7 @@
       svg.append(bar);
 
       const tipLabel = `${valLabel(v)}${labels[i] ? ` (${labels[i]})` : ""}`;
-      const showTip = () => tip.show(tipLabel, ((bx + barW / 2) / W) * 100, 0);
+      const showTip = () => tip.show(tipLabel, bar);
       bar.addEventListener("pointerenter", showTip);
       bar.addEventListener("focus", showTip);
       bar.addEventListener("pointerleave", tip.hide);
@@ -300,7 +319,7 @@
 
     box.textContent = "";
     box.append(svg);
-    const tip = wireBarTip(box, "barchart__callout");
+    const tip = wireBarTip("barchart__callout");
 
     values.forEach((v, i) => {
       const h = barH(v);
@@ -319,7 +338,7 @@
       svg.append(bar);
 
       const tipLabel = `${valLabel(v)}${labels[i] ? ` (${labels[i]})` : ""}`;
-      const showTip = () => tip.show(tipLabel, ((x(i) + barW / 2) / W) * 100, (barY / H) * 100);
+      const showTip = () => tip.show(tipLabel, bar);
       bar.addEventListener("pointerenter", showTip);
       bar.addEventListener("focus", showTip);
       bar.addEventListener("pointerleave", tip.hide);
@@ -329,9 +348,33 @@
 
   // Each card scales to its own max, like a normal standalone chart.
   document.querySelectorAll(".linechart").forEach((box) => {
-    if (box.classList.contains("linechart--mini")) drawMini(box);
-    else draw(box, null);
+    if (!box.classList.contains("linechart--mini")) draw(box, null);
   });
+
+  // Mini sparklines redraw on size change — the same rAF-deferred,
+  // dedupe-by-Set dance as the barBoxes observer below, so a redraw that
+  // resizes the box (e.g. its H changes) doesn't re-trigger itself in a
+  // loop. Wired to the box's own size rather than run once like draw()
+  // above, since drawMini's H depends on the stretched layout height (see
+  // the comment on drawMini), which can change after a viewport resize
+  // re-wraps the sibling money panel's text.
+  const miniBoxes = document.querySelectorAll(".linechart--mini");
+  if (miniBoxes.length && "ResizeObserver" in window) {
+    let miniRaf = 0;
+    const miniPending = new Set();
+    const flushMini = () => {
+      miniRaf = 0;
+      miniPending.forEach(drawMini);
+      miniPending.clear();
+    };
+    const miniRo = new ResizeObserver((entries) => {
+      entries.forEach((entry) => miniPending.add(entry.target));
+      if (!miniRaf) miniRaf = requestAnimationFrame(flushMini);
+    });
+    miniBoxes.forEach((box) => miniRo.observe(box));
+  } else {
+    miniBoxes.forEach(drawMini);
+  }
 
   // .institution__card--chart is meant to match its sibling stats card's
   // height (see .institution__grid) — previously done by leaving its own
