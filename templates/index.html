@@ -25,8 +25,8 @@
   {% if e.total_stat %}
   {# Figure is summed from the data (all institute types). #}
   {% set total = spend::total() | trim | int %}
-  {% set total_short = spend::inr_short(n=total) | trim %}
-  {{ ui::stat_card(title=e.total_stat.title, number=total_short, note=e.total_stat.note | default(value="")) }}
+  {% set total_inr = spend::inr_full(n=total) | trim %}
+  {{ ui::stat_card(title=e.total_stat.title, number=total_inr, note=e.total_stat.note | default(value="")) }}
   {% endif %}
 
   {% if e.nit %}
