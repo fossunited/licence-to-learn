@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% import "macros/ui.html" as ui %}
+{% import "macros/spend.html" as spend %}
 
 {% block content %}
 {% set e = section.extra %}
@@ -22,7 +23,10 @@
   </section>
 
   {% if e.total_stat %}
-  {{ ui::stat_card(title=e.total_stat.title, number=e.total_stat.number, note=e.total_stat.note | default(value="")) }}
+  {# Figure is summed from the data (all institute types). #}
+  {% set total = spend::total() | trim | int %}
+  {% set total_short = spend::inr_short(n=total) | trim %}
+  {{ ui::stat_card(title=e.total_stat.title, number=total_short, note=e.total_stat.note | default(value="")) }}
   {% endif %}
 
   {% if e.nit %}
