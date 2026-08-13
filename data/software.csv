@@ -1,11 +1,10 @@
 software,institutions,category,tool_type
-Google Workspace Education,"NIT Delhi, NIT Durgapur, NIT Pondicherry",Productivity & Collaboration,Administrative Tool
 Zoom Workspace Pro,"NIT Delhi, NIT Pondicherry",Productivity & Collaboration,Administrative Tool
 Office Suit Microsoft Office 365,"NIT Delhi, NIT Agartala, NIT Durgapur, NIT Pondicherry, NIT Rourkela, NIT Raipur",Productivity & Collaboration,Administrative Tool
 Web Ex (CISCO A-FLEX-3_ProPack),"NIT Delhi, NIT Pondicherry",Productivity & Collaboration,Administrative Tool
 Seqrite Antivirus Premium ,NIT Delhi,Cybersecurity,Administrative Tool
 Matlab,"NIT Delhi, NIT Durgapur, NIT Goa, NIT Pondicherry, NIT Meghalaya, NIT Srinagar, NIT Trichy, NIT Rourkela",Scientific & Engineering Software,Academic Tool
-Turnitin,"NIT Delhi, NIT Pondicherry, NIT Agartala, NIT Meghalaya, NIT Srinagar, NIT Rourkela",Academic Integrity & Writing,Academic Tool
+Turnitin,"NIT Delhi, NIT Pondicherry, NIT Agartala, NIT Meghalaya, NIT Srinagar, NIT Rourkela, IIM Amritsar, IIM Bangalore, IIM Calcutta, IIM Kashipur, IIM Trichy, IIM Udaipur, IIM Vishakhapatnam, IIM Nagpur, IIM Raipur, IIM Jammu, IIM Lucknow, IIM Indore, IIM Sambhalpur, IIIT Nagpur, IIIT Bhopal, IIIT Kottayam, IIIT Vadodara, IIIT Kancheepuram, IIIT Allahabad, IIIT Gwalior",Academic Integrity & Writing,Academic Tool
 Fortinet Firewall 601F,NIT Delhi,Cybersecurity,Administrative Tool
 Firewall Authenticator,NIT Delhi,Cybersecurity,Administrative Tool
 MS Teams,NIT Delhi,Productivity & Collaboration,Administrative Tool
@@ -25,7 +24,7 @@ ANSYS HFSS ,"NIT Agartala, NIT Srinagar, NIT Trichy",Simulation & Modelling,Acad
 ANSYS Maxwell ,"NIT Agartala, NIT Goa, NIT Trichy",Simulation & Modelling,Academic Tool
 ANSYS Lumerical ,NIT Agartala,Simulation & Modelling,Academic Tool
 ANSYS Zemax,NIT Agartala,Simulation & Modelling,Academic Tool
-ANSYS,"NIT Agartala, NIT Durgapur, NIT Goa, NIT Pondicherry, NIT Meghalaya, NIT Trichy",Simulation & Modelling,Academic Tool
+ANSYS,"NIT Agartala, NIT Durgapur, NIT Goa, NIT Pondicherry, NIT Meghalaya, NIT Trichy, NIT Rourkela, IIIT Kancheepuram, IIIT Allahabad",Simulation & Modelling,Academic Tool
 CHEMCAD Software,NIT Agartala,Scientific & Engineering Software,Academic Tool
 ABAQUS Academic Research,NIT Agartala,Simulation & Modelling,Academic Tool
 Hyper LINGO 20 ,NIT Agartala,Data Analysis & Statistics,Academic Tool
@@ -33,23 +32,21 @@ COMSOL,"NIT Durgapur, NIT Trichy",Simulation & Modelling,Academic Tool
 SPSS,"NIT Durgapur, NIT Trichy",Data Analysis & Statistics,Academic Tool
 SSL,NIT Durgapur,Cybersecurity,Administrative Tool
 LUSAS,NIT Durgapur,Simulation & Modelling,Academic Tool
-Cadence EDA tool,NIT Goa,Electronic Design Automation (EDA),Academic Tool
+Cadence EDA tool,"NIT Goa, IIIT Kalyani, IIIT Kottayam, IIIT Una, IIIT Tiruchirapalli, IIIT Kancheepuram, IIIT Allahabad",Electronic Design Automation (EDA),Academic Tool
 Synopsys Sentaurus TCAD,NIT Goa,Electronic Design Automation (EDA),Academic Tool
 Visual TCAD,NIT Goa,Electronic Design Automation (EDA),Academic Tool
 AMD Vidado Design Suite Software,NIT Goa,Electronic Design Automation (EDA),Academic Tool
-ANSYS,"NIT Goa, NIT Trichy, NIT Rourkela",Simulation & Modelling,Academic Tool
-CST studio suite,NIT Goa,Simulation & Modelling,Academic Tool
+CST studio suite,"NIT Goa, IIIT Kottayam, IIIT Una, IIIT Allahabad, IIIT Kancheepuram",Simulation & Modelling,Academic Tool
 RT-Lab software ,NIT Goa,Simulation & Modelling,Academic Tool
 PSIM,NIT Goa,Scientific & Engineering Software,Academic Tool
 MI Power,NIT Goa,Academic Integrity & Writing,Academic Tool
-Quill Bot,NIT Goa,Simulation & Modelling,Academic Tool
 Midas Gen ,NIT Goa,Simulation & Modelling,Academic Tool
 Midas GTS Nx,NIT Goa,Simulation & Modelling,Academic Tool
 Plaxis 2D,NIT Goa,GIS & Remote Sensing,Academic Tool
 Arc GIS,NIT Goa,CAD / CAM / Design,Academic Tool
 AutoCAD,"NIT Goa, NIT Trichy",CAD / CAM / Design,Academic Tool
 MasterCAM,NIT Goa,ERP & Administration,Administrative Tool
-Superset - Tnpsuite,NIT Kurukshetra,Simulation & Modelling,Academic Tool
+Superset - Tnpsuite,"NIT Kurukshetra, IIIT Kancheepuram, IIIT Tiruchirapalli",Simulation & Modelling,Academic Tool
 Ventclim Fluidyn Software,NIT Kurukshetra,Cybersecurity,Administrative Tool
 K7 Security Enterprises ,NIT Kurukshetra,Simulation & Modelling,Academic Tool
 Structural Worsute Software,NIT Kurukshetra,Scientific & Engineering Software,Academic Tool
@@ -62,15 +59,15 @@ Openlex Library Management Software,NIT Kurukshetra,Scientific & Engineering Sof
 PESS Software,NIT Kurukshetra,CAD / CAM / Design,Academic Tool
 CAD/CAM,NIT Pondicherry,Scientific & Engineering Software,Academic Tool
 Wolfram Mathematica Network software,NIT Pondicherry,Simulation & Modelling,Academic Tool
-Netsim Software academic version,"NIT Pondicherry, NIT Srinagar",IT Infrastructure & OS,Administrative Tool
+Netsim Software academic version,"NIT Pondicherry, NIT Srinagar, IIIT Kottayam",IT Infrastructure & OS,Administrative Tool
 Microsoft Windows 10 pro OEM pack,NIT Pondicherry,IT Infrastructure & OS,Administrative Tool
 Microsoft windows 10 professional OS ,NIT Pondicherry,Scientific & Engineering Software,Academic Tool
-NI Lab View software,NIT Pondicherry,Simulation & Modelling,Academic Tool
+NI Lab View software,"NIT Pondicherry, IIIT Una",Simulation & Modelling,Academic Tool
 "Optical communication systems Simulator (Optsim),",NIT Pondicherry,Simulation & Modelling,Academic Tool
 PLAXIS software,NIT Pondicherry,Library & Research Management,Administrative Tool
 IEEE IEL Online Tier 2,NIT Pondicherry,Electronic Design Automation (EDA),Academic Tool
 proteus VSM for MSP430,NIT Pondicherry,Simulation & Modelling,Academic Tool
-Comsol Multiphysics software package,"NIT Pondicherry, NIT Trichy",Simulation & Modelling,Academic Tool
+Comsol Multiphysics software package,"NIT Pondicherry, NIT Trichy, IIIT Kancheepuram",Simulation & Modelling,Academic Tool
 FLOW 3D Hydro software,NIT Pondicherry,Simulation & Modelling,Academic Tool
 Midas Software,"NIT Pondicherry, NIT Meghalaya, NIT Kurukshetra, NIT Sikkim",Simulation & Modelling,Academic Tool
 "Geostudio software,",NIT Pondicherry,Simulation & Modelling,Academic Tool
@@ -80,7 +77,7 @@ English laboratory software sanako study,NIT Pondicherry,Cybersecurity,Administr
 email security appliance and its accessories ,NIT Pondicherry,GIS & Remote Sensing,Academic Tool
 ArcGIS Software,NIT Pondicherry,Simulation & Modelling,Academic Tool
 LS-RAPID software,NIT Pondicherry,Academic Integrity & Writing,Academic Tool
-Grammarly,"NIT Pondicherry, NIT Meghalaya, NIT Srinagar, NIT Rourkela",Scientific & Engineering Software,Academic Tool
+Grammarly,"NIT Pondicherry, NIT Meghalaya, NIT Srinagar, NIT Rourkela, IIIT Kancheepuram, IIIT Tiruchirapalli, IIIT Gwalior",Scientific & Engineering Software,Academic Tool
 Ergo Master,NIT Pondicherry,IT Infrastructure & OS,Administrative Tool
 AI server,NIT Pondicherry,Scientific & Engineering Software,Academic Tool
 "Anthropometer and Ergo Fello software,",NIT Pondicherry,Simulation & Modelling,Academic Tool
@@ -92,9 +89,7 @@ AVR for IoT and Robotics simulation with 12 months upgrades and perpetual licens
 NVivo quantitative data analysis software,NIT Pondicherry,Academic Integrity & Writing,Academic Tool
 "Trados studio translation software (Perpetual License),",NIT Pondicherry,AI & Machine Learning,Academic Tool
 All Acess AI Tools,NIT Pondicherry,ERP & Administration,Administrative Tool
-Tally Prime,"NIT Pondicherry, NIT Trichy",Library & Research Management,Administrative Tool
 Web of Science,"NIT Pondicherry, NIT Sikkim",Library & Research Management,Administrative Tool
-KOHA(ILMS),NIT Pondicherry,Library & Research Management,Administrative Tool
 IRNS NITPY,NIT Pondicherry,Scientific & Engineering Software,Academic Tool
 LabVIEW,"NIT Pondicherry, NIT Rourkela",Simulation & Modelling,Academic Tool
 ETAP(Electrical Transient Analyzer Program),NIT Pondicherry,CAD / CAM / Design,Academic Tool
@@ -103,14 +98,12 @@ NX CAE + CAD,NIT Pondicherry,ERP & Administration,Administrative Tool
 Teamcenter,NIT Pondicherry,Simulation & Modelling,Academic Tool
 Simcenter Amesim Academic Bundle,NIT Pondicherry,IT Infrastructure & OS,Administrative Tool
 Ubuntu OS,NIT Pondicherry,ERP & Administration,Administrative Tool
-ESSL Biomentric Software,NIT Pondicherry,AI & Machine Learning,Academic Tool
 Researcher AI,NIT Pondicherry,Simulation & Modelling,Academic Tool
 Rsoft OptSIM,NIT Pondicherry,CAD / CAM / Design,Academic Tool
 Rsoft CAD GUI,NIT Pondicherry,Simulation & Modelling,Academic Tool
 BeamPROP BPM add-on,NIT Pondicherry,IT Infrastructure & OS,Administrative Tool
 Academic Teaching Network License OptSIM,NIT Pondicherry,Electronic Design Automation (EDA),Academic Tool
 Proteus VSM Embedded Design & Simulation software,NIT Pondicherry,Electronic Design Automation (EDA),Academic Tool
-Proteus VSM for MSP430,NIT Pondicherry,Cybersecurity,Administrative Tool
 Kaspersky Anti-Virus,NIT Meghalaya,Library & Research Management,Administrative Tool
 LSAcademia,NIT Meghalaya,Electronic Design Automation (EDA),Academic Tool
 MEMS Design,NIT Meghalaya,Electronic Design Automation (EDA),Academic Tool
@@ -134,8 +127,7 @@ Smart PLS Software,NIT Srinagar,Scientific & Engineering Software,Academic Tool
 Lancyville Software,NIT Srinagar,IT Infrastructure & OS,Administrative Tool
 Cisco Business,NIT Srinagar,Data Analysis & Statistics,Academic Tool
 OriginLab PRO V2023,NIT Srinagar,Simulation & Modelling,Academic Tool
-Setfos,NIT Srinagar,Electronic Design Automation (EDA),Academic Tool
-Synopsys EDA Tools,NIT Srinagar,Simulation & Modelling,Academic Tool
+Setfos,"NIT Srinagar, IIIT Allahabad",Electronic Design Automation (EDA),Academic Tool
 Standard License PFC Suite,NIT Srinagar,Simulation & Modelling,Academic Tool
 netsim standard version,NIT Srinagar,Scientific & Engineering Software,Academic Tool
 TOBII,NIT Durgapur,Simulation & Modelling,Academic Tool
@@ -155,7 +147,6 @@ Microsoft Azure Dev Tools for Teaching,NIT Trichy,IT Infrastructure & OS,Adminis
 3D Experience R2021x,NIT Trichy,CAD / CAM / Design,Academic Tool
  Catia V5 6R2020 ,NIT Trichy,CAD / CAM / Design,Academic Tool
 Catia 3D Experience V6 R2020x,NIT Trichy,CAD / CAM / Design,Academic Tool
-Cisco Webex,NIT Trichy,IT Infrastructure & OS,Administrative Tool
  Delmia V5 6R2020 ,NIT Trichy,CAD / CAM / Design,Academic Tool
 Delmia 3D Experience V6 R2020x,NIT Trichy,CAD / CAM / Design,Academic Tool
 Mathematica 14.0,NIT Trichy,Scientific & Engineering Software,Academic Tool
@@ -166,3 +157,184 @@ Simulia R2023x,NIT Trichy,Simulation & Modelling,Academic Tool
 SolidWorks Campus EDU 2026,"NIT Trichy, NIT Rourkela",CAD / CAM / Design,Academic Tool
 Symantec Endpoint Protection 14.4.0,NIT Trichy,Cybersecurity,Administrative Tool
 Visual Studio Professional 2022,NIT Rourkela,IT Infrastructure & OS,Academic Tool
+MATLAB (campus-wide / single user),"IIM Amritsar, IIM Bangalore, IIM Calcutta, IIM Kashipur, IIM Udaipur, IIM Vishakhapatnam, IIM Lucknow, IIIT Kalyani, IIIT Guwahati, IIIT Bhopal, IIIT Surat, IIIT Una, IIIT Vadodara, IIIT Dharwad, IIIT Kancheepuram, IIIT Allahabad",Data Analysis & Statistics,Academic Tool
+IBM SPSS (Base / Statistics / Amos / Modeler),"IIM Amritsar, IIM Bangalore, IIM Calcutta, IIM Kashipur, IIM Jammu, IIM Raipur, IIM Trichy, IIM Udaipur, IIM Lucknow, IIM Nagpur",Data Analysis & Statistics,Academic Tool
+STATA (MP/SE incl. v16-v19),"IIM Amritsar, IIM Bangalore, IIM Calcutta, IIM Kashipur, IIM Trichy, IIM Raipur, IIM Lucknow, IIM Nagpur, IIM Udaipur",Data Analysis & Statistics,Academic Tool
+SmartPLS / Smart PLS 3 & 4,"IIM Amritsar, IIM Bangalore, IIM Calcutta, IIM Kashipur, IIM Trichy, IIM Raipur, IIM Vishakhapatnam, IIM Lucknow, IIIT Allahabad",Data Analysis & Statistics,Academic Tool
+EViews,"IIM Calcutta, IIM Kashipur, IIM Trichy, IIM Lucknow, IIM Amritsar, IIM Nagpur",Data Analysis & Statistics,Academic Tool
+NVivo (10/12/14/15),"IIM Amritsar, IIM Bangalore, IIM Calcutta, IIM Kashipur, IIM Trichy, IIM Vishakhapatnam",Data Analysis & Statistics,Academic Tool
+ATLAS.ti,"IIM Bangalore, IIM Nagpur, IIM Lucknow",Data Analysis & Statistics,Academic Tool
+Wolfram Mathematica,"IIM Bangalore, IIM Udaipur, IIM Vishakhapatnam, IIM Lucknow, IIIT Kancheepuram",Data Analysis & Statistics,Academic Tool
+Minitab,"IIM Kashipur, IIM Vishakhapatnam, IIM Lucknow",Data Analysis & Statistics,Academic Tool
+MAXQDA,IIM Kashipur,Data Analysis & Statistics,Academic Tool
+Gauss,IIM Bangalore,Data Analysis & Statistics,Academic Tool
+SAS,"IIM Bangalore, IIM Lucknow",Data Analysis & Statistics,Academic Tool
+Vensim Pro,IIM Calcutta,Data Analysis & Statistics,Academic Tool
+AMPL & LOQO,IIM Vishakhapatnam,Data Analysis & Statistics,Academic Tool
+LINGO,"IIM Kashipur, IIM Trichy",Data Analysis & Statistics,Academic Tool
+Meta Analysis Statistical Software,IIM Vishakhapatnam,Data Analysis & Statistics,Academic Tool
+Decision Tools Suite,IIM Trichy,Data Analysis & Statistics,Academic Tool
+At Risk Software,IIM Bangalore,Data Analysis & Statistics,Academic Tool
+Capstone,IIM Nagpur,Simulation & Modelling,Academic Tool
+"Microsoft 365 / Office 365 (incl. M365-A3, MS CAL, Cloud Campus)","IIM Amritsar, IIM Bangalore, IIM Calcutta, IIM Jammu, IIM Kashipur, IIM Raipur, IIM Trichy, IIM Udaipur, IIM Vishakhapatnam",Productivity & Collaboration,Administrative Tool
+Microsoft Office (2013/2019/2021 perpetual),"IIM Amritsar, IIM Raipur, IIM Nagpur",Productivity & Collaboration,Administrative Tool
+Microsoft Project,"IIM Amritsar, IIM Trichy, IIM Nagpur",Productivity & Collaboration,Administrative Tool
+Microsoft Volume Licenses (academic),"IIM Bangalore, IIM Trichy, IIM Lucknow",Productivity & Collaboration,Academic Tool
+Microsoft Windows,"IIM Raipur, IIM Nagpur, IIIT Kalyani",Productivity & Collaboration,Administrative Tool
+Microsoft Teams,IIM Raipur,Productivity & Collaboration,Administrative Tool
+Google Workspace / Google Workspace for Education Plus / Google Meet upgrade / G-Suite,"IIM Kashipur, IIM Trichy, IIM Udaipur, IIM Lucknow, IIM Jammu, IIM Ahmedabad, NIT Delhi, NIT Durgapur, NIT Pondicherry, IIIT Nagpur, IIIT Surat, IIIT Kottayam, IIIT Vadodara, IIIT Dharwad, IIIT Kancheepuram, IIIT Tiruchirapalli, IIIT Allahabad",Productivity & Collaboration,Administrative Tool
+Adobe Acrobat Pro / Creative Cloud,"IIM Amritsar, IIM Bangalore, IIM Trichy, IIM Lucknow, IIM Nagpur, IIM Jammu, IIIT Kancheepuram",Design and Media,Administrative Tool
+Adobe Illustrator / Premiere Pro,IIM Amritsar,Design and Media,Administrative Tool
+Foxit PDF Editor,IIM Amritsar,Productivity & Collaboration,Administrative Tool
+Systweak PDF Viewer/Writer,IIM Amritsar,Productivity & Collaboration,Administrative Tool
+Nitro Pro Editor,IIM Amritsar,Productivity & Collaboration,Administrative Tool
+Mail Merge Toolkit STD,IIM Bangalore,Productivity & Collaboration,Administrative Tool
+MathType,IIM Bangalore,Academic Integrity & Writing,Academic Tool
+Overleaf,"IIM Bangalore, IIM Vishakhapatnam, IIM Lucknow, IIIT Allahabad",Academic Integrity & Writing,Academic Tool
+Zoom,"IIM Amritsar, IIM Bangalore, IIM Kashipur, IIM Jammu, IIM Trichy, IIM Vishakhapatnam, IIM Raipur, IIM Nagpur, IIM Lucknow, IIM Ahmedabad, IIM Udaipur, IIIT Sonepat",Productivity & Collaboration,Administrative Tool
+Avaya,IIM Ahmedabad,Productivity & Collaboration,Administrative Tool
+Webex / Cisco Webex,"IIM Vishakhapatnam, IIM Raipur, IIIT Nagpur, IIIT Kancheepuram, IIIT Allahabad, IIIT Dharwad, NIT Trichy",Productivity & Collaboration,Administrative Tool
+Grammarly Premium,"IIM Amritsar, IIM Kashipur, IIM Jammu, IIM Sambhalpur, IIM Kozhikode",Academic Integrity & Writing,Academic Tool
+Qualtrics Design XM,"IIM Bangalore, IIM Calcutta, IIM Kashipur, IIM Trichy, IIM Raipur, IIM Vishakhapatnam, IIM Nagpur, IIM Lucknow",Survey/Qualitative,Academic Tool
+Sawtooth Software,IIM Bangalore,Survey/Qualitative,Academic Tool
+Otter (transcription),IIM Bangalore,Survey/Qualitative,Academic Tool
+Mentimeter,"IIM Bangalore, IIM Nagpur",Survey/Qualitative,Academic Tool
+Kahoot,IIM Bangalore,Survey/Qualitative,Academic Tool
+AutoCAD / AutoCAD LT,"IIM Bangalore, IIM Vishakhapatnam, IIM Raipur",CAD / CAM / Design,Academic Tool
+CorelDRAW,"IIM Bangalore, IIM Vishakhapatnam, IIM Nagpur",CAD / CAM / Design,Academic Tool
+Canva,"IIM Amritsar, IIIT Tiruchirapalli",Design and Media,Academic Tool
+Freepik,IIM Amritsar,Design and Media,Academic Tool
+Sanako Connect Language Lab,IIM Vishakhapatnam,LMS,Academic Tool
+Moodle (LMS),"IIM Jammu, IIM Udaipur, IIM Vishakhapatnam, IIM Ahmedabad",LMS,Academic Tool
+Cesim simulation,IIM Jammu,Simulation & Modelling,Academic Tool
+Digital Marketing / Digital Transformation simulations,IIM Jammu,Simulation & Modelling,Academic Tool
+EDTek,"IIM Bangalore, IIM Udaipur",LMS,Academic Tool
+XSemble,IIM Amritsar,Software Engineering/ Development Framework,Academic Tool
+OLT Software,IIM Trichy,LMS,Academic Tool
+DigiExam / DigiProctor / Mettl,"IIM Bangalore, IIM Nagpur, IIM Vishakhapatnam",Exam/Proctoring,Administrative Tool
+ExamSoft,IIM Vishakhapatnam,Exam/Proctoring,Administrative Tool
+Mercer Mettle,"IIM Vishakhapatnam, IIIT Allahabad",Exam/Proctoring,Administrative Tool
+KOHA (ILMS open source),"IIM Nagpur, IIM Jammu, NIT Pondicherry",Library & Research Management,Administrative Tool
+Libsys ILMS (Integrated Library Management),IIM Trichy,Library & Research Management,Administrative Tool
+RemoteXS,"IIM Nagpur, IIM Trichy",Library & Research Management,Administrative Tool
+MyLoft,IIM Trichy,Library & Research Management,Administrative Tool
+Tally / TallyPrime,"IIM Amritsar, IIM Bangalore, IIM Nagpur, IIM Lucknow, IIIT Tiruchirapalli, IIIT Allahabad, IIIT Dharwad, NIT Pondicherry, NIT Trichy",ERP & Administration,Administrative Tool
+PeopleSoft,IIM Bangalore,ERP & Administration,Administrative Tool
+Asset & Procurement Management,IIM Bangalore,ERP & Administration,Administrative Tool
+MDC (Office Management),IIM Bangalore,ERP & Administration,Administrative Tool
+Visitor Management Software,IIM Bangalore,ERP & Administration,Administrative Tool
+Registro TMS (Timetable) / EPAS / Course Bidding,IIM Bangalore,ERP & Administration,Administrative Tool
+Bloomberg Software,"IIM Trichy, IIM Sambhalpur, IIM Kozhikode",Data Analysis & Statistics,Academic Tool
+Dropbox Business,IIM Bangalore,Productivity & Collaboration,Administrative Tool
+Zoho (for EEP),IIM Bangalore,ERP & Administration,Administrative Tool
+Labnol,IIM Nagpur,ERP & Administration,Administrative Tool
+Oryggi Manager,IIM Nagpur,ERP & Administration,Administrative Tool
+SAP S/4 HANA,IIM Ahmedabad,ERP & Administration,Administrative Tool
+Sophos (antivirus / endpoint),"IIM Amritsar, IIM Vishakhapatnam",Cybersecurity/Network,Administrative Tool
+Fortinet / Fortigate UTM,"IIM Amritsar, IIM Ahmedabad",Cybersecurity/Network,Administrative Tool
+Bitdefender Enterprise,IIM Amritsar,Cybersecurity/Network,Administrative Tool
+Seqrite,IIM Amritsar,Cybersecurity/Network,Administrative Tool
+Max Secure Software Antivirus,IIM Amritsar,Cybersecurity/Network,Administrative Tool
+EPS7.1 Business Standard,IIM Amritsar,Cybersecurity/Network,Administrative Tool
+Kaspersky Endpoint Security,"IIM Trichy, IIM Nagpur, IIM Lucknow",Cybersecurity/Network,Administrative Tool
+Stellar Data Recovery,IIM Amritsar,Cybersecurity/Network,Administrative Tool
+Ruckus Cloud Subscription (Wi-Fi),IIM Amritsar,Cybersecurity/Network,Administrative Tool
+SSL certificates,IIM Amritsar,Cybersecurity/Network,Administrative Tool
+Cisco ISE,IIM Ahmedabad,Cybersecurity/Network,Administrative Tool
+Cisco Prime,IIM Ahmedabad,Cybersecurity/Network,Administrative Tool
+TeamViewer,IIM Amritsar,IT Infrastructure & OS,Administrative Tool
+VMware VSAN,IIM Ahmedabad,IT Infrastructure & OS,Administrative Tool
+Veeam,IIM Ahmedabad,IT Infrastructure & OS,Administrative Tool
+Arena Simulation,IIM Trichy,Simulation & Modelling,Academic Tool
+GAMS,"IIM Amritsar, IIM Lucknow",Data Analysis & Statistics,Academic Tool
+Chat bot App,IIM Amritsar,Simulation & Modelling,Academic Tool
+Digital Markstrat,IIM Nagpur,Simulation & Modelling,Academic Tool
+Stukent Mimic social situation Software,IIM Nagpur,Simulation & Modelling,Academic Tool
+Markstrat 6 Durable Goods,IIM Nagpur,Simulation & Modelling,Academic Tool
+BrandPRO,IIM Nagpur,Simulation & Modelling,Academic Tool
+SIMUL8,"IIM Nagpur, IIM Lucknow",Simulation & Modelling,Academic Tool
+The Beergame App,IIM Nagpur,Simulation & Modelling,Academic Tool
+Social Media simulation,IIM Nagpur,Simulation & Modelling,Academic Tool
+Lisrel,IIM Lucknow,Data Analysis & Statistics,Academic Tool
+UCINET,IIM Lucknow,Data Analysis & Statistics,Academic Tool
+Quillbot,"IIM Sambhalpur, IIM Kozhikode, NIT Goa",Academic Integrity & Writing,Academic Tool
+Editage,IIM Kozhikode,Academic Integrity & Writing,Academic Tool
+Ace Equity/MF,"IIM Sambhalpur, IIM Kozhikode, IIM Nagpur, IIIT Allahabad",Data Analysis & Statistics,Academic Tool
+EndNote,IIIT Kancheepuram,Library & Research Management,Academic Tool
+Google Meet,IIIT Tiruchirapalli,Productivity & Collaboration,Administrative Tool
+Institute-developed ERP Software,IIIT Kalyani,ERP & Administration,Administrative Tool
+Microsoft Office Suite,IIIT Kalyani,Productivity & Collaboration,Administrative Tool
+Siemens EDA,"IIIT Kalyani, IIIT Kancheepuram",Electronic Design Automation (EDA),Academic Tool
+Silvaco TCAD,IIIT Kalyani,Electronic Design Automation (EDA),Academic Tool
+Keil,IIIT Kalyani,Electronic Design Automation (EDA),Academic Tool
+ERP/Samarth ERP,"IIIT Nagpur, IIIT Sonepat, IIIT Bhopal, IIIT Tiruchirapalli",ERP & Administration,Administrative Tool
+"Microsoft Campus Agreement (Windows, Office, Server, Licenses)","IIIT Nagpur, IIIT Kota, IIIT Sonepat, IIIT Bhopal, IIIT Kottayam, IIIT Una, IIIT Kancheepuram, IIIT Allahabad",IT Infrastructure & OS,Administrative Tool
+Endpoint Security Software,IIIT Nagpur,Cybersecurity,Administrative Tool
+Antivirus Software,IIIT Nagpur,Cybersecurity,Administrative Tool
+Training and Placement Management Software,IIIT Sonepat,ERP & Administration,Administrative Tool
+CodeTantra,IIIT Guwahati,Skill Assessment & Training,Academic Tool
+MathWorks (additional toolboxes),"IIIT Kottayam, IIIT Allahabad",Scientific & Engineering Software,Academic Tool
+DELNET - Developing Library Network,IIIT Kottayam,Library & Research Management,Academic Tool
+Magnet AXIOM - Academic Cloud License,IIIT Kottayam,Cybersecurity,Academic Tool
+Xilinx Vivado / Vitis,"IIIT Kottayam, IIIT Una, IIIT Tiruchirapalli, IIIT Kalyani",Electronic Design Automation (EDA),Academic Tool
+Springer and ACM (digital library subscriptions),IIIT Kottayam,Library & Research Management,Academic Tool
+DLM IMPACT Language Lab with Integrated Examination Module,IIIT Dharwad,Skill Assessment & Training,Academic Tool
+Firewall Protection Bundle,IIIT Dharwad,Cybersecurity,Administrative Tool
+AIMS (Academic Information Management System),IIIT Dharwad,ERP & Administration,Administrative Tool
+Juniper Mist Controller,IIIT Dharwad,IT Infrastructure & OS,Administrative Tool
+GoDaddy,IIIT Dharwad,IT Infrastructure & OS,Administrative Tool
+ERNET India,IIIT Dharwad,IT Infrastructure & OS,Administrative Tool
+Academic Abacus Research,IIIT Kancheepuram,Data Analysis & Statistics,Academic Tool
+3DEXPERIENCE Software,IIIT Kancheepuram,CAD / CAM / Design,Academic Tool
+Arc'S Vms Software,IIIT Kancheepuram,Scientific & Engineering Software,Academic Tool
+VASP Software,IIIT Kancheepuram,Simulation & Modelling,Academic Tool
+Rhinoceros,IIIT Kancheepuram,CAD / CAM / Design,Academic Tool
+Surf 3D / PLOT Software,IIIT Kancheepuram,CAD / CAM / Design,Academic Tool
+OptiSystem,IIIT Kancheepuram,Simulation & Modelling,Academic Tool
+EGUN Software,IIIT Kancheepuram,Simulation & Modelling,Academic Tool
+Altair Enterprise Bundle,"IIIT Kancheepuram, IIIT Allahabad",Simulation & Modelling,Academic Tool
+DEFORM Software,IIIT Kancheepuram,Simulation & Modelling,Academic Tool
+Cadasil Arm + FEA Analysis Software,IIIT Kancheepuram,Simulation & Modelling,Academic Tool
+LS-DYNA (LSTC),"IIIT Kancheepuram, IIIT Allahabad",Simulation & Modelling,Academic Tool
+MSC Adams Software,IIIT Kancheepuram,Simulation & Modelling,Academic Tool
+Keysight ADS (Premier University Licence),IIIT Kancheepuram,Electronic Design Automation (EDA),Academic Tool
+OriginLab Origin,IIIT Kancheepuram,Data Analysis & Statistics,Academic Tool
+ChemCraft (Academic Licence),IIIT Kancheepuram,Scientific & Engineering Software,Academic Tool
+Bloomberg Design Library,IIIT Kancheepuram,Library & Research Management,Academic Tool
+Simpack,IIIT Kancheepuram,Simulation & Modelling,Academic Tool
+OpManager (ManageEngine),IIIT Kancheepuram,IT Infrastructure & OS,Administrative Tool
+Synapsys,"IIIT Kancheepuram, IIIT Tiruchirapalli",,Administrative Tool
+Keysight tools,IIIT Tiruchirapalli,Electronic Design Automation (EDA),Academic Tool
+Simplify 3D,IIIT Tiruchirapalli,CAD / CAM / Design,Academic Tool
+OrcaSlicer (FlashForge),IIIT Tiruchirapalli,CAD / CAM / Design,Academic Tool
+ChiTuBox,IIIT Tiruchirapalli,CAD / CAM / Design,Academic Tool
+Anycubic Photon Workshop,IIIT Tiruchirapalli,CAD / CAM / Design,Academic Tool
+Capture Pro,IIIT Tiruchirapalli,Library & Research Management,Academic Tool
+Creality Scan,IIIT Tiruchirapalli,CAD / CAM / Design,Academic Tool
+Autodesk Meshmixer,IIIT Tiruchirapalli,CAD / CAM / Design,Academic Tool
+Google Translate,IIIT Tiruchirapalli,Productivity & Collaboration,Academic Tool
+Google Colab,IIIT Tiruchirapalli,AI & Machine Learning,Academic Tool
+Urkund and Drillbit (plagiarism software),IIIT Tiruchirapalli,Academic Integrity & Writing,Academic Tool
+e-Granthalaya,IIIT Tiruchirapalli,Library & Research Management,Academic Tool
+Synopsys EDA,"IIIT Allahabad, NIT Srinagar",Electronic Design Automation (EDA),Academic Tool
+BIOVIA Discovery Studio,IIIT Allahabad,Scientific & Engineering Software,Academic Tool
+Keysight PathWave BenchVue,IIIT Allahabad,Scientific & Engineering Software,Academic Tool
+Lumerical / Wireless InSite,IIIT Allahabad,Simulation & Modelling,Academic Tool
+WIEN2k,IIIT Allahabad,Scientific & Engineering Software,Academic Tool
+Schrodinger Suite,IIIT Allahabad,Scientific & Engineering Software,Academic Tool
+Statista,IIIT Allahabad,Data Analysis & Statistics,Academic Tool
+Quick Heal Total Security,IIIT Allahabad,Cybersecurity,Administrative Tool
+Norton 360 / Norton Antivirus,IIIT Allahabad,Cybersecurity,Administrative Tool
+Knimbus mLibrary Premium,IIIT Allahabad,Library & Research Management,Academic Tool
+SignalHire,IIIT Allahabad,ERP & Administration,Administrative Tool
+Envato Market,IIIT Allahabad,Productivity & Collaboration,Administrative Tool
+eSSL,"IIIT Allahabad, NIT Pondicherry",ERP & Administration,Administrative Tool
+Capricorn Digital Signature Certificate,IIIT Allahabad,Cybersecurity,Administrative Tool
+POD.ai,IIIT Allahabad,AI & Machine Learning,Academic Tool
+RealEye,IIIT Allahabad,Data Analysis & Statistics,Academic Tool
+SSL wildcard certificate,IIIT Allahabad,Cybersecurity,Administrative Tool
+Gamma AI,IIIT Allahabad,AI & Machine Learning,Academic Tool
+Remcom Wireless InSite,IIIT Allahabad,Simulation & Modelling,Academic Tool
+EDWinXP,IIIT Allahabad,CAD / CAM / Design,Academic Tool
+Nanodcal,IIIT Allahabad,Simulation & Modelling,Academic Tool
+MapMyAccess,IIIT Gwalior,Library & Research Management,Administrative Tool

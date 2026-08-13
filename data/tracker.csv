@@ -43,5 +43,30 @@ IIM,IIM Sirmaur,Sirmaur,Responded,C,IIMs/response_IIMSR_R_E_26_00015.pdf
 IIM,IIM Mumbai,Mumbai,Responded,C,IIMs/response_NIEMU_R_E_26_00053.pdf
 IIM,IIM Lucknow,Lucknow,Responded,C,IIMs/response_IIMLK_R_E_26_00038.pdf
 IIM,IIM Bodhgaya,Bodhgaya,Did not respond,C,IIMs/status_IIMBG_R_E_26_00046.pdf
-IIM,IIM Ranchi,Ranchi,Did not respond,C,
-IIM,IIM Shillong,Shillong,Did not respond,C,
+IIM,IIM Ranchi,Ranchi,Responded,B,IIMs/status_IIMRN_R_E_26_00017.pdf
+IIM,IIM Shillong,Shillong,Did not respond,C,IIMs/status_RGIMS_R_E_26_00019.pdf
+IIIT,IIIT Una,Una,Responded,A,IIITs/response_IIITU_R_E_26_00008.pdf
+IIIT,IIIT Vadodara,Vadodara,Responded,A,IIITs/response_IIITV_R_E_26_00017.pdf
+IIIT,IIIT Kottayam,Kottayam,Responded,A,IIITs/response_IIITK_R_E_26_00012.pdf
+IIIT,IIIT Allahabad,Allahabad,Responded,A,IIITs/response_IITAD_R_E_26_00027.pdf
+IIIT,IIIT Nagpur,Nagpur,Responded,B,IIITs/response_%20IIITN_R_E_26_00012.pdf
+IIIT,IIIT Guwahati,Guwahati,Responded,B,IIITs/response_IIITA_R_E_26_00123.pdf
+IIIT,IIIT Sonepat,Sonepat,Responded,B,IIITs/response_IIISO_R_E_26_00013.pdf
+IIIT,IIIT Surat,Surat,Responded,B,IIITs/response_IIITI_R_E_26_00011.pdf
+IIIT,IIIT Kancheepuram,Kanchipuram,Responded,B,IIITs/response_ITDAM_R_E_26_00019.pdf
+IIIT,IIIT Gwalior,Gwalior,Responded,B,
+IIIT,IIIT Dharwad,Dharwad,Responded,B,IIITs/response_IIITD_R_E_26_00017.pdf
+IIIT,IIIT Kota,Kota,Responded,C,IIITs/response_ESTAB_R_E_26_00017.pdf
+IIIT,IIIT Pune,Pune,Responded,C,IIITs/response_IIITP_R_L_26_00007.pdf
+IIIT,IIIT Bhopal,Bhopal,Responded,C,IIITs/response_IIITB_R_E_26_00020.pdf
+IIIT,IIIT Kurnool,Kurnool,Responded,C,IIITs/response_MEADP_R_E_26_00017.pdf
+IIIT,IIIT Tiruchirapalli,Tiruchirapalli,Responded,C,IIITs/response_ITPAL_R_E_26_00011.pdf
+IIIT,IIIT Chittoor,Chittoor,Did not respond,C,IIITs/status_IIICH_R_E_26_00010.pdf
+IIIT,IIIT Bhagalpur,Bhagalpur,Did not respond,C,IIITs/status_IIITG_R_E_26_00008.pdf
+IIIT,IIIT Lucknow,Lucknow,Did not respond,C,IIITs/status_IIITL_R_E_26_00018.pdf
+IIIT,IIIT Kalyani,Kalyani,Responded,B,IIITs/response_IIITW_R_E_26_00010%281%29.pdf
+IIIT,IIIT Ranchi,Ranchi,Did not respond,C,
+IIIT,IIIT Raichur,Raichur,Did not respond,C,IIITs/status_IIITT_R_E_26_00007.pdf
+IIIT,IIIT Senapati,Senapati,Did not respond,C,IIITs/status_IIITS_R_E_26_00008.pdf
+IIIT,IIIT Agartala,Agartala,Did not respond,C,IIITs/response_IITAG_R_E_26_00007.pdf
+IIIT,IIIT Jabalpur,Jabalpur,Did not respond,C,IIITs/status_IITDM_R_E_26_00013.pdf

@@ -6,7 +6,7 @@ template = "page.html"
 
 ## Software dependencies mapped
 
-{{ data_table(csv="data/software.csv", schema="data/software.schema.json", caption="Stack as reported by NITs. Coming up next: IIMs, IIITs and AIIMS.") }}
+{{ data_table(csv="data/software.csv", schema="data/software.schema.json", caption="Stack as reported by NITs, IIMs and IIITs. Coming up next: AIIMS.") }}
 
 ## Total costs
 

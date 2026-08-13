@@ -1,37 +1,52 @@
-{# One card per software product in software.csv. The adoption bar renders one
-   segment per NIT tracked in tracker.csv (the same universe "Total
-   expenditure as reported by NITs" uses elsewhere on this page), filled for
-   the ones using this tool. Segment identity isn't tracked, just the count.
+{# One card per software product in software.csv. The adoption bar and "X/N"
+   caption are tab-dependent: on a single-type tab (NIT/IIM/etc.) both the
+   numerator (institutes of that type using this tool) and denominator (that
+   type's tracker.csv total) are scoped to it — so a tool used by both NITs
+   and IIMs shows its NIT-only count while the NIT tab is active. On the All
+   tab both numbers are the grand total across every tracked institute,
+   growing automatically as new types/institutes are added. Each card carries
+   its full per-type breakdown as data-counts/data-insts (JSON), and the grid
+   carries the per-type denominators as data-type-totals; static/js/cards.js
+   swaps the displayed numbers and bar segments on tab change (see
+   updateCounts there). The server-rendered markup below is just the NIT
+   variant, matching the default active tab, for the pre-JS/no-JS paint.
+
    Bar is a fixed-2-row CSS grid with column-major auto-flow, so segment 0 is
    top-left, 1 is bottom-left, 2 is top of the next column, and so on —
-   adjacent segments alternate rows reading left to right.
-
-   data-type on each card is the comma-joined set of institute types (from
-   tracker.csv) among the institutions using it — usually just one type today
-   since all current data is NIT-only, but written to hold more once IIM/etc
-   software data exists. The heading swaps per active filter tab the same way
-   spend_counter.html does; the adoption denominator (total_n) stays scoped to
-   NITs for now since that's the only type with any software data — revisit
-   once a second type has real rows, so "X/N" doesn't silently mean the wrong N.
+   adjacent segments alternate rows reading left to right. It's pre-rendered
+   with enough segments for the largest possible denominator (the All-tab
+   grand total) so JS never needs to add/remove DOM nodes when switching
+   tabs — it only toggles is-filled/hidden on existing segments.
    {{ software_cards(csv="data/software.csv") }} #}
 {% import "macros/ui.html" as ui %}
 {% set sw = load_data(path=csv) %}
 {% set tracker = load_data(path="data/tracker.csv") %}
 
-{% set_global total_n = 0 %}
+{% set_global total_NIT = 0 %}
+{% set_global total_IIIT = 0 %}
+{% set_global total_IIM = 0 %}
+{% set_global total_AIIMS = 0 %}
+{% set_global total_Other = 0 %}
 {% for tr in tracker.records %}
-  {% if tr[0] == "NIT" %}{% set_global total_n = total_n + 1 %}{% endif %}
+  {% if tr[0] == "NIT" %}{% set_global total_NIT = total_NIT + 1 %}
+  {% elif tr[0] == "IIIT" %}{% set_global total_IIIT = total_IIIT + 1 %}
+  {% elif tr[0] == "IIM" %}{% set_global total_IIM = total_IIM + 1 %}
+  {% elif tr[0] == "AIIMS" %}{% set_global total_AIIMS = total_AIIMS + 1 %}
+  {% elif tr[0] == "Other" %}{% set_global total_Other = total_Other + 1 %}
+  {% endif %}
 {% endfor %}
-{# The bar's segment count is cosmetic and rounds up to the nearest even
-   number (25 institutes -> 26 segments) so it splits evenly; the "X/N" caption
-   below still reports the real total_n, unrounded. #}
-{% set_global seg_total = total_n %}
-{% if total_n % 2 == 1 %}{% set_global seg_total = total_n + 1 %}{% endif %}
+{% set grand_total = total_NIT + total_IIIT + total_IIM + total_AIIMS + total_Other %}
+{% set_global seg_total_max = grand_total %}
+{% if grand_total % 2 == 1 %}{% set_global seg_total_max = grand_total + 1 %}{% endif %}
+{% set_global seg_total_nit = total_NIT %}
+{% if total_NIT % 2 == 1 %}{% set_global seg_total_nit = total_NIT + 1 %}{% endif %}
+
+{% set totals_json = '{"NIT":' ~ total_NIT ~ ',"IIIT":' ~ total_IIIT ~ ',"IIM":' ~ total_IIM ~ ',"AIIMS":' ~ total_AIIMS ~ ',"Other":' ~ total_Other ~ ',"All":' ~ grand_total ~ '}' %}
 
 {{ ui::type_heading(before="Software usage reported by") }}
 
 <div class="card-section">
-<div class="card-grid software-cards" id="software-cards" data-card-grid data-limit="3" data-search-placeholder="Search softwares">
+<div class="card-grid software-cards" id="software-cards" data-card-grid data-limit="3" data-search-placeholder="Search softwares" data-type-totals='{{ totals_json }}'>
   {% for s in sw.records %}
     {% set name = s[0] %}
     {% set insts = s[1] | split(pat=", ") %}
@@ -41,15 +56,52 @@
     {% set swatch = tool_type | lower | replace(from=" ", to="-") %}
     {% set initial = name | truncate(length=1, end="") | upper %}
 
-    {% set_global raw_types = [] %}
+    {# Bucket the institutions using this tool by type, so both the count and
+       the institute names can be scoped to whichever tab is active. #}
+    {% set_global insts_NIT = [] %}
+    {% set_global insts_IIIT = [] %}
+    {% set_global insts_IIM = [] %}
+    {% set_global insts_AIIMS = [] %}
+    {% set_global insts_Other = [] %}
     {% for inst_name in insts %}
       {% for tr in tracker.records %}
-        {% if tr[1] == inst_name %}{% set_global raw_types = raw_types | concat(with=tr[0]) %}{% endif %}
+        {% if tr[1] == inst_name %}
+          {% if tr[0] == "NIT" %}{% set_global insts_NIT = insts_NIT | concat(with=inst_name) %}
+          {% elif tr[0] == "IIIT" %}{% set_global insts_IIIT = insts_IIIT | concat(with=inst_name) %}
+          {% elif tr[0] == "IIM" %}{% set_global insts_IIM = insts_IIM | concat(with=inst_name) %}
+          {% elif tr[0] == "AIIMS" %}{% set_global insts_AIIMS = insts_AIIMS | concat(with=inst_name) %}
+          {% elif tr[0] == "Other" %}{% set_global insts_Other = insts_Other | concat(with=inst_name) %}
+          {% endif %}
+        {% endif %}
       {% endfor %}
     {% endfor %}
-    {% set card_type = raw_types | unique | join(sep=",") %}
+    {% set count_NIT = insts_NIT | length %}
+    {% set count_IIIT = insts_IIIT | length %}
+    {% set count_IIM = insts_IIM | length %}
+    {% set count_AIIMS = insts_AIIMS | length %}
+    {% set count_Other = insts_Other | length %}
 
-    <article class="software-card" data-sort-value="{{ count }}" data-type="{{ card_type }}">
+    {# data-type drives the existing tab show/hide filter (cards.js apply()):
+       any type present among this software's users keeps the card visible
+       on that type's tab. #}
+    {% set_global present_types = [] %}
+    {% if count_NIT > 0 %}{% set_global present_types = present_types | concat(with="NIT") %}{% endif %}
+    {% if count_IIIT > 0 %}{% set_global present_types = present_types | concat(with="IIIT") %}{% endif %}
+    {% if count_IIM > 0 %}{% set_global present_types = present_types | concat(with="IIM") %}{% endif %}
+    {% if count_AIIMS > 0 %}{% set_global present_types = present_types | concat(with="AIIMS") %}{% endif %}
+    {% if count_Other > 0 %}{% set_global present_types = present_types | concat(with="Other") %}{% endif %}
+    {% set card_type = present_types | join(sep=",") %}
+
+    {% set counts_json = '{"NIT":' ~ count_NIT ~ ',"IIIT":' ~ count_IIIT ~ ',"IIM":' ~ count_IIM ~ ',"AIIMS":' ~ count_AIIMS ~ ',"Other":' ~ count_Other ~ ',"All":' ~ count ~ '}' %}
+    {% set insts_NIT_str = insts_NIT | join(sep=", ") %}
+    {% set insts_IIIT_str = insts_IIIT | join(sep=", ") %}
+    {% set insts_IIM_str = insts_IIM | join(sep=", ") %}
+    {% set insts_AIIMS_str = insts_AIIMS | join(sep=", ") %}
+    {% set insts_Other_str = insts_Other | join(sep=", ") %}
+    {% set insts_all_str = insts | join(sep=", ") %}
+    {% set insts_json = '{"NIT":"' ~ insts_NIT_str ~ '","IIIT":"' ~ insts_IIIT_str ~ '","IIM":"' ~ insts_IIM_str ~ '","AIIMS":"' ~ insts_AIIMS_str ~ '","Other":"' ~ insts_Other_str ~ '","All":"' ~ insts_all_str ~ '"}' %}
+
+    <article class="software-card" data-sort-value="{{ count }}" data-type="{{ card_type }}" data-counts='{{ counts_json }}' data-insts='{{ insts_json }}'>
       <div class="software-card__head">
         <span class="software-card__icon swatch--{{ swatch }}" aria-hidden="true">{{ initial }}</span>
         <div class="software-card__meta">
@@ -57,14 +109,14 @@
           <p class="software-card__category">{{ category }}</p>
         </div>
       </div>
-      <div class="software-card__bar" role="img" aria-label="Used by {{ count }} of {{ total_n }} tracked NITs: {{ insts | join(sep=', ') }}" title="{{ insts | join(sep=', ') }}">
-        {% for i in range(end=seg_total) %}
-        <span class="software-card__seg{% if i < count %} is-filled{% endif %}"></span>
+      <div class="software-card__bar" role="img" aria-label="Used by {{ count_NIT }} of {{ total_NIT }} tracked NITs: {{ insts_NIT | join(sep=', ') }}" title="{{ insts_NIT | join(sep=', ') }}">
+        {% for i in range(end=seg_total_max) %}
+        <span class="software-card__seg{% if i < count_NIT %} is-filled{% endif %}"{% if i >= seg_total_nit %} hidden{% endif %}></span>
         {% endfor %}
       </div>
       {# tool_type is title-cased in the CSV ("Academic Tool"); lowercase the
          noun so it reads as prose mid-sentence. #}
-      <p class="software-card__count" title="{{ insts | join(sep=', ') }}"><strong>{{ count }}</strong>/{{ total_n }} institutes use this {{ tool_type | replace(from=" Tool", to=" tool") }}</p>
+      <p class="software-card__count" title="{{ insts_NIT | join(sep=', ') }}"><strong data-count-num>{{ count_NIT }}</strong>/<span data-count-den>{{ total_NIT }}</span> institutes use this {{ tool_type | replace(from=" Tool", to=" tool") }}</p>
     </article>
   {% endfor %}
 </div>

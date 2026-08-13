@@ -34,6 +34,19 @@
     });
   };
 
+  const TYPE_LABELS = {
+    NIT: "tracked NITs",
+    IIIT: "tracked IIITs",
+    IIM: "tracked IIMs",
+    AIIMS: "tracked AIIMS",
+    Other: "tracked other institutes",
+    All: "tracked institutes",
+  };
+
+  const parseJSON = (str, fallback) => {
+    try { return JSON.parse(str); } catch { return fallback; }
+  };
+
   const enhance = (grid) => {
     const cards = () => [...grid.children].filter((el) => el.tagName === "ARTICLE");
     const all = cards();
@@ -47,6 +60,46 @@
     const hideSelector = grid.dataset.hideUnlessSearch || null;
     const emptyNote = grid.parentElement.querySelector(`[data-empty-note]`);
     const comingSoonText = emptyNote ? emptyNote.textContent.trim() : "";
+
+    // Cards whose count/denominator are scoped per active tab (currently just
+    // software-cards — see software_cards.html): each card carries its own
+    // per-type breakdown (data-counts/data-insts), the grid carries each
+    // type's denominator (data-type-totals). Absent on grids that don't use
+    // this (e.g. spend-cards), in which case this whole step is a no-op.
+    const typeTotals = parseJSON(grid.dataset.typeTotals, null);
+    const updateCounts = (activeType) => {
+      if (!typeTotals) return;
+      const key = activeType || "All";
+      const total = typeTotals[key];
+      if (total === undefined) return;
+      const segTotal = total % 2 === 1 ? total + 1 : total;
+      const label = TYPE_LABELS[key] || TYPE_LABELS.All;
+
+      all.forEach((card) => {
+        const counts = parseJSON(card.dataset.counts, {});
+        const insts = parseJSON(card.dataset.insts, {});
+        const n = counts[key] ?? 0;
+        const instList = insts[key] ?? "";
+
+        const numEl = card.querySelector("[data-count-num]");
+        const denEl = card.querySelector("[data-count-den]");
+        if (numEl) numEl.textContent = n;
+        if (denEl) denEl.textContent = total;
+
+        const countP = card.querySelector(".software-card__count");
+        if (countP) countP.title = instList;
+
+        const bar = card.querySelector(".software-card__bar");
+        if (bar) {
+          bar.setAttribute("aria-label", `Used by ${n} of ${total} ${label}: ${instList}`);
+          bar.title = instList;
+          [...bar.children].forEach((seg, i) => {
+            seg.hidden = i >= segTotal;
+            seg.classList.toggle("is-filled", i < n);
+          });
+        }
+      });
+    };
 
     const tools = document.createElement("div");
     tools.className = "card-tools";
@@ -193,11 +246,13 @@
           collapsed = true;
           apply();
           updateTypeSwaps(tab.dataset.type || "");
+          updateCounts(tab.dataset.type || "");
         });
       });
     }
 
     apply();
+    updateCounts(tabsBar ? (tabsBar.querySelector(".filter-tab.is-active")?.dataset.type || "") : "");
   };
 
   document.querySelectorAll("[data-card-grid]").forEach(enhance);
