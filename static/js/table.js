@@ -7,18 +7,7 @@
 
   const LIMIT = 40;
   const mobile = matchMedia("(max-width: 40rem)").matches;
-  const inr = new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  });
-  // Compact suffix shown in brackets beside a full ₹ number: "2.3 Cr" / "1.5 L".
-  const shortINR = (n) => {
-    if (n >= 1e7) return `${(n / 1e7).toFixed(2).replace(/\.?0+$/, "")} Cr`;
-    if (n >= 1e5) return `${(n / 1e5).toFixed(2).replace(/\.?0+$/, "")} L`;
-    if (n >= 1e3) return `${(n / 1e3).toFixed(1).replace(/\.?0+$/, "")}k`;
-    return "";
-  };
+  const { withShort } = window.ltl;
 
   const enhance = (table) => {
     const thead = table.tHead;
@@ -35,8 +24,7 @@
       const n = Number(td.dataset.val);
       if (!Number.isFinite(n)) return;
       if (n === 0) { td.textContent = "NA"; return; }
-      const s = shortINR(n);
-      td.textContent = s ? `${inr.format(n)} (${s})` : inr.format(n);
+      td.textContent = withShort(n);
     });
 
     // 1b. Swatch tags (table macro's swatch_from): colour keyed off the

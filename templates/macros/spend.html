@@ -20,30 +20,3 @@
 {%- endfor -%}
 {{- sum -}}
 {% endmacro total %}
-
-{# Full rupee figure, Indian-grouped. Rendered at build time. #}
-{% macro inr_full(n) %}
-{%- set head = (n / 1000) | int -%}
-{%- set last3 = n - head * 1000 -%}
-{%- set_global grouped = last3 -%}
-{%- if head > 0 -%}
-  {%- if last3 < 10 -%}{%- set_global grouped = "00" ~ last3 -%}
-  {%- elif last3 < 100 -%}{%- set_global grouped = "0" ~ last3 -%}
-  {%- endif -%}
-{%- endif -%}
-{%- set_global rest = head -%}
-{# Two digits per pass; eight passes cover any figure this site will ever show. #}
-{%- for i in range(end=8) -%}
-  {%- if rest > 0 -%}
-    {%- set h = (rest / 100) | int -%}
-    {%- set pair = rest - h * 100 -%}
-    {%- if h > 0 and pair < 10 -%}
-      {%- set_global grouped = "0" ~ pair ~ "," ~ grouped -%}
-    {%- else -%}
-      {%- set_global grouped = pair ~ "," ~ grouped -%}
-    {%- endif -%}
-    {%- set_global rest = h -%}
-  {%- endif -%}
-{%- endfor -%}
-₹{{ grouped }}
-{% endmacro inr_full %}

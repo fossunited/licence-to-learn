@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block scripts %}
+  <script src="{{ get_url(path='js/utils.js', cachebust=true) | safe }}" defer></script>
   <script src="{{ get_url(path='js/table.js', cachebust=true) | safe }}" defer></script>
   <script src="{{ get_url(path='js/chart.js', cachebust=true) | safe }}" defer></script>
   <script src="{{ get_url(path='js/spend.js', cachebust=true) | safe }}" defer></script>
