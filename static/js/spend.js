@@ -4,20 +4,7 @@
    page instead of a hover popover. */
 (() => {
   "use strict";
-  const fmt = new Intl.NumberFormat("en-IN");
-  const money = new Intl.NumberFormat("en-IN", {
-    style: "currency", currency: "INR", maximumFractionDigits: 0,
-  });
-  // Missing / NaN / empty cells count as 0.
-  const num = (v) => { const n = Number(v); return Number.isFinite(n) ? n : 0; };
-  // Compact suffix shown in brackets beside a full ₹ number: "2.3 Cr" / "1.5 L".
-  const shortINR = (n) => {
-    if (n >= 1e7) return `${(n / 1e7).toFixed(2).replace(/\.?0+$/, "")} Cr`;
-    if (n >= 1e5) return `${(n / 1e5).toFixed(2).replace(/\.?0+$/, "")} L`;
-    if (n >= 1e3) return `${(n / 1e3).toFixed(1).replace(/\.?0+$/, "")}k`;
-    return "";
-  };
-  const withShort = (v) => { const s = shortINR(v); return s ? `${money.format(v)} (${s})` : money.format(v); };
+  const { num, group, short: shortINR, withShort } = window.ltl;
   const amt = (v) => (v === 0 ? "data not provided or collected" : withShort(v));
   const row = (k, v) => `<div class="stat"><dt>${k}</dt><dd>${v}</dd></div>`;
 
@@ -37,7 +24,7 @@
     const out = c.querySelector("[data-odo]");
     if (!out) return;
     const base = num(c.dataset.base);
-    out.textContent = fmt.format(base);
+    out.textContent = group(base);
     const shortEl = c.querySelector(".counter__short");
     if (shortEl) { const s = shortINR(base); shortEl.textContent = s ? `(${s})` : ""; }
   });

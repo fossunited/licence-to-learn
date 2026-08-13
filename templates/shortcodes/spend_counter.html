@@ -4,32 +4,18 @@
    instead of being hardcoded to NITs.
    {{ spend_counter(csv="data/costs.csv") }} #}
 {% import "macros/ui.html" as ui %}
-{% set data = load_data(path=csv) %}
-{% set tracker = load_data(path="data/tracker.csv") %}
+{% import "macros/spend.html" as spend %}
 {% set types = ["NIT", "IIIT", "IIM", "AIIMS", "Other", ""] %}
 <div class="counter-set">
 {% for t in types %}
-  {% set_global base = 0 %}
-  {% set_global reporting = 0 %}
-  {% for tr in tracker.records %}
-    {% if t == "" or tr[0] == t %}
-      {% set inst = tr[1] %}
-      {% for row in data.records %}
-        {% if row[0] == inst and row[6] != "0" %}
-          {% set v = row[6] | int %}
-          {% set_global base = base + v %}
-          {% set_global reporting = reporting + 1 %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
+  {% set base = spend::total(t=t, csv=csv) | trim | int %}
 
   {% set idsuf = t | lower %}
   {% if t == "" %}{% set idsuf = "all" %}{% endif %}
 
   <div class="counter-block" data-type-swap data-type="{{ t }}"{% if t != "NIT" %} hidden{% endif %}>
     <h2 class="counter-block__title">Total expenditure as reported by {{ ui::type_label(t=t) }}</h2>
-    {% if reporting > 0 %}
+    {% if base > 0 %}
     <div class="counter"
          id="spend-counter-{{ idsuf }}"
          data-base="{{ base }}"

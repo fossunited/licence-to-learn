@@ -6,23 +6,15 @@
   "use strict";
   const SVGNS = "http://www.w3.org/2000/svg";
 
-  const fmtFull = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+  // A 0 reads as no data, not ₹0 — hence valLabel rather than plain inr().
+  const { num, inr, short: shortINR } = window.ltl;
   // long form for the tooltip: "2.57 crore INR" / "77 lakh INR" / "₹4,200"
   const words = (n) => {
     if (n >= 1e7) return `${(n / 1e7).toFixed(2).replace(/\.?0+$/, "")} crore INR`;
     if (n >= 1e5) return `${Math.round(n / 1e5)} lakh INR`;
-    return fmtFull.format(n);
+    return inr(n);
   };
-  // Missing / NaN / empty cells are treated as 0; a 0 reads as no data, not ₹0.
-  const num = (v) => { const n = Number(v); return Number.isFinite(n) ? n : 0; };
   const valLabel = (v) => (v === 0 ? "data not provided or collected" : words(v));
-  // Compact suffix shown in brackets beside a full ₹ number: "2.3 Cr" / "1.5 L".
-  const shortINR = (n) => {
-    if (n >= 1e7) return `${(n / 1e7).toFixed(2).replace(/\.?0+$/, "")} Cr`;
-    if (n >= 1e5) return `${(n / 1e5).toFixed(2).replace(/\.?0+$/, "")} L`;
-    if (n >= 1e3) return `${(n / 1e3).toFixed(1).replace(/\.?0+$/, "")}k`;
-    return "";
-  };
   // short form for the Y axis: "2.6cr" / "77L" / "4200"
   const axisShort = (n) => {
     if (n >= 1e7) return `${(n / 1e7).toFixed(1)}cr`;
@@ -457,7 +449,7 @@
     const v = Number(n.dataset.inr);
     if (!Number.isFinite(v)) return;
     const s = shortINR(v);
-    const full = fmtFull.format(v);
+    const full = inr(v);
     if (!s) { n.textContent = full; return; }
     n.textContent = "";
     n.classList.add("amt");

@@ -13,7 +13,7 @@
 (() => {
   "use strict";
 
-  const num = (v) => { const n = Number(v); return Number.isFinite(n) ? n : 0; };
+  const { num } = window.ltl;
 
   // First entry is the initial view: the collapsed top-N reads as a
   // leaderboard, so source-file order was never a useful starting point and

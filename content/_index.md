@@ -8,7 +8,6 @@ hero_lede = "We are mapping every proprietary software dependency across India's
 
 [extra.total_stat]
 title = "Total expenditure as reported"
-number = "₹66 Cr"
 note = "*These numbers are not exhaustive; if anything, they are only the floor."
 
 [extra.nit]

@@ -1,0 +1,22 @@
+{# Reported spend, summed from data/costs.csv. Import: {% import "macros/spend.html" as spend %} #}
+
+{# Total reported spend for one institute type ("" = every tracked institute),
+   over the institutes listed in data/tracker.csv. Emits the raw rupee integer
+   so callers format it themselves:
+   {% set total = spend::total(t="") | trim | int %} #}
+{% macro total(t="", csv="data/costs.csv") %}
+{%- set data = load_data(path=csv) -%}
+{%- set tracker = load_data(path="data/tracker.csv") -%}
+{%- set_global sum = 0 -%}
+{%- for tr in tracker.records -%}
+  {%- if t == "" or tr[0] == t -%}
+    {%- for row in data.records -%}
+      {%- if row[0] == tr[1] and row[6] != "0" -%}
+        {%- set v = row[6] | int -%}
+        {%- set_global sum = sum + v -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+{{- sum -}}
+{% endmacro total %}
