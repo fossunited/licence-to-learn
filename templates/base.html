@@ -7,7 +7,9 @@
     {% set page_title = title | default(value=config.title) %}
     <title>{% block title %}{{ page_title }}{% endblock %} · {{ config.title }}</title>
     <meta name="description" content="{{ description | default(value=config.description) }}" />
+    <link rel="icon" href="{{ get_url(path='favicon.ico') | safe }}" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="{{ get_url(path='img/logo.svg') | safe }}" />
+    <link rel="apple-touch-icon" href="{{ get_url(path='apple-touch-icon.png') | safe }}" />
     <link rel="preload" as="font" type="font/woff2" href="{{ get_url(path='fonts/inter-400.woff2') | safe }}" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="{{ get_url(path='fonts/arvo-400.woff2') | safe }}" crossorigin />
     <link rel="stylesheet" href="{{ get_url(path='css/fonts.css') | safe }}" />
