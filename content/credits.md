@@ -24,6 +24,6 @@ This project was possible thanks to friends in the FOSS United community whose b
 
 **Content and data** (case studies, RTI documents, copy, CSVs) :: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Reuse and remix freely, credit this project, keep derivatives equally open.
 
-**Site source code** (templates, CSS, JS) :: [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html). See `LICENSE` in the repo.
+**Site source code** (templates, CSS, JS) :: [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html). See `LICENSE` in the repo.
 
 {{ btn(label="Licence to Learn on GitHub", href="https://github.com/fossunited/license-to-learn", variant="surface", icon="arrow-up-right") }}

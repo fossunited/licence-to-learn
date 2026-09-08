@@ -54,6 +54,6 @@ This project was possible thanks to friends in the FOSS United community whose b
 
 ## License
 
-**Content and data** (case studies, RTI documents, copy, CSVs) :: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Reuse and remix freely, credit this project, keep derivatives equally open.
+**Content and data** (case studies, RTI documents, copy, CSVs) :: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Reuse and remix freely, credit this project, keep derivatives equally open. See [LICENSE-CONTENT](LICENSE-CONTENT) in the repo.
 
-**Site source code** (templates, CSS, JS) :: [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.html). See [LICENSE](LICENSE) in the repo.
+**Site source code** (templates, CSS, JS) :: [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html). See [LICENSE](LICENSE) in the repo.
